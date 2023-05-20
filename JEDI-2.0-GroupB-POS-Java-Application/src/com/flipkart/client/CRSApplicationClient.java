@@ -14,6 +14,7 @@ public class CRSApplicationClient {
 	/**
 	 * @param args
 	 */
+	//testing
 	public static void main(String[] args) {
 		
 		Scanner scannerObj = new Scanner(System.in);
