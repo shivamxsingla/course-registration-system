@@ -11,7 +11,7 @@ import com.flipkart.constant.ModeOfPaymentConstant;
 import com.flipkart.exception.*;
 
 /**
- * @author shubh
+ * @author cyrus.dwivedi
  *
  */
 public interface RegistrationInterface {

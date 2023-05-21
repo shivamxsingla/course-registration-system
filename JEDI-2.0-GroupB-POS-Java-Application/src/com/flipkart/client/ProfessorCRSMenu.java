@@ -14,7 +14,7 @@ import com.flipkart.service.ProfessorInterface;
 import com.flipkart.service.ProfessorOperation;
 
 /**
- * @author shubh
+ * @author ansh.aggarwal
  *
  */
 public class ProfessorCRSMenu {

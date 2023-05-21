@@ -6,7 +6,7 @@ package com.flipkart.bean;
 import com.flipkart.constant.GradeConstant;
 
 /**
- * @author Shubham
+ * @author cyrus.dwivedi
  *
  */
 public class RegisteredCourse {

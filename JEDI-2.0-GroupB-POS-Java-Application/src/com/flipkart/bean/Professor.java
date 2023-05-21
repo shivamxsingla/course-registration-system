@@ -8,7 +8,7 @@ import com.flipkart.constant.GenderConstant;
 import com.flipkart.constant.RoleConstant;
 
 /**
- * @author Shubham
+ * @author ansh.aggarwal
  *
  */
 public class Professor extends User {

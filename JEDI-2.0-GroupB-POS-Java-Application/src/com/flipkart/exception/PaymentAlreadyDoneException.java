@@ -4,7 +4,7 @@
 package com.flipkart.exception;
 
 /**
- * @author sayan
+ * @author ansh.aggarwal
  *
  */
 @SuppressWarnings("serial")

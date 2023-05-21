@@ -1,0 +1,17 @@
+22:55:22,773  INFO UserDaoOperation,main:73 - User with userId 123 does not exist
+22:56:00,226  INFO AdminDaoOperation,main:229 - 1 user added.
+22:56:00,226  INFO AdminDaoOperation,main:235 - User with userId: ansh added.
+22:56:00,249  INFO StudentDaoOperation,main:74 - 1 student added.
+22:56:00,249  INFO StudentDaoOperation,main:80 - User with userId: ansh added.
+22:56:13,497  INFO UserDaoOperation,main:73 - User with userId 1234 does not exist
+22:59:52,046  INFO AdminDaoOperation,main:229 - 1 user added.
+22:59:52,048  INFO AdminDaoOperation,main:235 - User with userId: shivam.singla added.
+22:59:52,067  INFO StudentDaoOperation,main:74 - 1 student added.
+22:59:52,068  INFO StudentDaoOperation,main:80 - User with userId: shivam.singla added.
+23:00:14,146  INFO UserDaoOperation,main:71 - Entered incorrect password
+23:00:35,441  INFO UserDaoOperation,main:71 - Entered incorrect password
+23:00:43,836  INFO UserDaoOperation,main:73 - User with userId shivam does not exist
+23:01:05,995  INFO UserDaoOperation,main:73 - User with userId shiva.singla does not exist
+23:01:15,303  INFO UserDaoOperation,main:73 - User with userId shivam.singla does not exist
+23:02:02,110  INFO UserDaoOperation,main:73 - User with userId shivam.singla does not exist
+23:02:30,994  INFO AdminDaoOperation,main:733 - 1 student approved.

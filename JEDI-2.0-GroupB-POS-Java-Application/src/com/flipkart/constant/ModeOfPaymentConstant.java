@@ -4,7 +4,7 @@
 package com.flipkart.constant;
 
 /**
- * @author rohanagarwal
+ * @author tanvi.sharma
  *
  */
 public enum ModeOfPaymentConstant {

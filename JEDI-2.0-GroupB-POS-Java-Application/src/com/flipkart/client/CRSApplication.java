@@ -22,7 +22,7 @@ import com.flipkart.service.UserOperation;
 import org.apache.log4j.Logger;
 
 /**
- * @author cyrus.dwivedi
+ * @author shivam.singla
  *
  */
 @SuppressWarnings("unused")
@@ -79,7 +79,7 @@ public class CRSApplication {
 	 * Method to exit application
 	 */
 	private static void exit() {
-		System.out.println("Exit Application");
+		System.out.println("Thank you for using the program!");
 	}
 
 	/**

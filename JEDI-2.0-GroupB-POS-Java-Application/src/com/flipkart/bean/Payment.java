@@ -8,7 +8,7 @@ import java.util.Random;
 import com.flipkart.constant.ModeOfPaymentConstant;
 
 /**
- * @author Shubham
+ * @author tanvi.sharma
  *
  */
 public class Payment {
