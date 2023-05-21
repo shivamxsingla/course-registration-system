@@ -3,6 +3,7 @@ package com.flipkart.exception;
 /**
  * Exception class for when adding a prof that already exists in the database
  */
+@SuppressWarnings("serial")
 public class ProfFoundException extends Exception {
     private String ProfID;
 

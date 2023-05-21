@@ -7,6 +7,7 @@ package com.flipkart.exception;
  * to be called during password change
  *
  */
+@SuppressWarnings("serial")
 public class PasswordMatchedOldException extends Exception{
 	/**
 	 * Constructor

@@ -7,6 +7,7 @@ package com.flipkart.exception;
  * @author Shubham
  *
  */
+@SuppressWarnings("serial")
 public class ProfNotDeletedException extends Exception {
 	private String ProfID;
 

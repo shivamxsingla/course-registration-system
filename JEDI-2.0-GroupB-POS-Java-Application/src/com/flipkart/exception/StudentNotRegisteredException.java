@@ -4,9 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * @author rohanagarwal
+ * @author shivam.singla
  *
  */
+@SuppressWarnings("serial")
 public class StudentNotRegisteredException extends Exception{
 	private String name;
 

@@ -19,7 +19,7 @@ import com.flipkart.service.StudentInterface;
 import com.flipkart.service.StudentOperation;
 
 /**
- * @author shubh
+ * @author divy.soni
  *
  */
 public class StudentCRSMenu {

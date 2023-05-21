@@ -4,9 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * @author rohanagarwal
+ * @author ansh.aggarwal
  *
  */
+@SuppressWarnings("serial")
 public class DatabaseException extends Exception {
 
 	/**

@@ -13,7 +13,7 @@ import com.flipkart.exception.StudentNotFoundException;
 import com.flipkart.exception.UserNotFoundException;
 
 /**
- * @author Shubham
+ * @author ramasamy.kandasamy
  * User Dao Interface
  */
 public interface UserDaoInterface {

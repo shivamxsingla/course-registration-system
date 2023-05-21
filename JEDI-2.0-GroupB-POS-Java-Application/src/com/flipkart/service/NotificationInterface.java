@@ -9,6 +9,7 @@ import com.flipkart.bean.PaymentNotification;
 /**
  * Below interface describes operation of sending notification.
  */
+@SuppressWarnings("unused")
 public interface NotificationInterface {
 
     /**

@@ -7,6 +7,7 @@ package com.flipkart.exception;
  * @author sayan
  *
  */
+@SuppressWarnings("serial")
 public class PaymentAlreadyDoneException extends Exception{
 	private String studentId;
 

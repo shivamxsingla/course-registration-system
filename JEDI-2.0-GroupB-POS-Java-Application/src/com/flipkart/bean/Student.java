@@ -9,11 +9,7 @@ import com.flipkart.constant.GenderConstant;
 import com.flipkart.constant.RoleConstant;
 
 /**
- * @author Shubham
- *
- */
-/**
- * @author rohanagarwal
+ * @author shivam.singla
  *
  */
 public class Student extends User {

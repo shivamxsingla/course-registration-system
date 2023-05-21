@@ -10,6 +10,7 @@ import com.flipkart.bean.PaymentNotification;
 import com.flipkart.client.CRSApplication;
 import com.flipkart.dao.NotificationDaoOperation;
 
+@SuppressWarnings("unused")
 public class NotificationOperation implements NotificationInterface{
 	private static Logger logger = Logger.getLogger(NotificationOperation.class);
 

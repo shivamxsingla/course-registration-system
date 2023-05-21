@@ -4,7 +4,7 @@
 package com.flipkart.bean;
 
 /**
- * @author rohanagarwal
+ * @author ramasamy.kandasamy
  *
  */
 public class Course {

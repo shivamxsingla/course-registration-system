@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 
 /**
- * @author Yash
+ * @author divy.soni
  *
  */
 public class AdminCRSMenu {

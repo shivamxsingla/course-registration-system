@@ -22,6 +22,7 @@ import com.flipkart.utils.DBUtil;
  * @author Shubham
  *
  */
+@SuppressWarnings("unused")
 public class NotificationDaoOperation implements NotificationDaoInterface{
 	private static Logger logger = Logger.getLogger(NotificationDaoOperation.class);
 

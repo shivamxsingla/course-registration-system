@@ -1,7 +1,7 @@
 package com.flipkart.dao;
 
 /**
- * author: @subha
+ * author: @shivam.singla
  */
 
 import com.flipkart.bean.Course;
@@ -26,6 +26,7 @@ import java.util.*;
 
 import org.apache.log4j.Logger;
 
+@SuppressWarnings("unused")
 public class AdminDaoOperation implements AdminDaoInterface {
 	private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
 
@@ -51,7 +52,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
     }
 
     /**
-     * Method to add course in catalogue using SQL command.
+     * Method to add course in catalog using SQL command.
      * @param course -> Course to be added
      * @throws CourseFoundException
      */
@@ -98,7 +99,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
     }
 
     /**
-     * Method to remove course from course catalogue using SQL command.
+     * Method to remove course from course catalog using SQL command.
      * @param courseID -> ID of course which is to be removed
      * @throws CourseNotFoundException
      * @throws CourseNotDeletedException
@@ -142,7 +143,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
     /**
      * Adds a professor object to the database using SQL command
-     * @param professor : professor object containing the details of the prof
+     * @param professor : professor object containing the details of the professor
      * @throws ProfNotAddedException
      * @throws ProfFoundException
      */

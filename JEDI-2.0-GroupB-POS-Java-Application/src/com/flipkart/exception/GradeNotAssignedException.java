@@ -3,6 +3,7 @@ package com.flipkart.exception;
 /**
  * Exception class for when grade is not assigned to student.
  */
+@SuppressWarnings("serial")
 public class GradeNotAssignedException extends Exception{
     private String studentID;
 

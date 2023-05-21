@@ -29,9 +29,10 @@ import com.flipkart.dao.RegistrationDaoInterface;
 import com.flipkart.dao.RegistrationDaoOperation;
 
 /**
- * @author shubh
+ * @author shivam.singla
  *
  */
+@SuppressWarnings("unused")
 public class RegistrationOperation implements RegistrationInterface {
 	private static Logger logger = Logger.getLogger(RegistrationOperation.class);
 

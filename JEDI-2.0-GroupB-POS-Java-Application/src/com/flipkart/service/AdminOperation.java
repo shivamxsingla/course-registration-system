@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class AdminOperation implements AdminInterface{
 
     private static volatile AdminOperation instance = null;
@@ -103,9 +104,10 @@ public class AdminOperation implements AdminInterface{
         	HashMap<String,Integer> coursesNeeded = new HashMap<>();
         	HashSet<String> studentIDs = new HashSet<>();
         	
-        	for (HashMap.Entry mapElement :prefCourses.entrySet()) {
+        	for (@SuppressWarnings("rawtypes") HashMap.Entry mapElement :prefCourses.entrySet()) {
                 String studentID = (String)mapElement.getKey();
-                List<Integer> courses = (List<Integer>)mapElement.getValue();
+                @SuppressWarnings("unchecked")
+				List<Integer> courses = (List<Integer>)mapElement.getValue();
                 for(Integer courseCode:courses) {
             		Course course = RegistrationDaoOperation.getInstance().getCourse(courseCode);
             		if(course.getFilledSeats()<Course.MAX_SEATS){
@@ -121,9 +123,10 @@ public class AdminOperation implements AdminInterface{
                 }
         	}
         	
-        	for (HashMap.Entry mapElement :alterCourses.entrySet()) {
+        	for (@SuppressWarnings("rawtypes") HashMap.Entry mapElement :alterCourses.entrySet()) {
                 String studentID = (String)mapElement.getKey();
-                List<Integer> courses = (List<Integer>)mapElement.getValue();
+                @SuppressWarnings("unchecked")
+				List<Integer> courses = (List<Integer>)mapElement.getValue();
                 for(Integer courseCode:courses) {
             		Course course = RegistrationDaoOperation.getInstance().getCourse(courseCode);
             		if(course.getFilledSeats()<Course.MAX_SEATS){

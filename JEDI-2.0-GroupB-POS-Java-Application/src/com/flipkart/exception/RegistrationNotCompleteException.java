@@ -7,6 +7,7 @@ package com.flipkart.exception;
  * @author rohanagarwal
  *
  */
+@SuppressWarnings("serial")
 public class RegistrationNotCompleteException extends Exception{
 	private String studentId;
 

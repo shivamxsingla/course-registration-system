@@ -3,6 +3,7 @@ package com.flipkart.exception;
 /**
  * Exception class for when a course cannot be removed from the course catalogue
  */
+@SuppressWarnings("serial")
 public class CourseNotDeletedException extends Exception{
     private int courseCode;
 

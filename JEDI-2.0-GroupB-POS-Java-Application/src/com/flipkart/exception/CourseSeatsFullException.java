@@ -2,10 +2,11 @@ package com.flipkart.exception;
 
 /**
  * Exception for when all seats for a course are full
- * @author shubh
+ * @author shivam.singla
  *
  */
 
+@SuppressWarnings("serial")
 public class CourseSeatsFullException extends Exception {
 
     private int courseID;

@@ -3,6 +3,7 @@ package com.flipkart.exception;
 /**
  * Exception class for when adding a course which already exists in the course catalogue
  */
+@SuppressWarnings("serial")
 public class CourseFoundException extends Exception{
     private int courseCode;
 

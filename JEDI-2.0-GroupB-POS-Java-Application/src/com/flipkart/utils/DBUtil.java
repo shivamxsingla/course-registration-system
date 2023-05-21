@@ -16,9 +16,10 @@ import org.apache.log4j.Logger;
 import com.flipkart.dao.NotificationDaoOperation;
 
 /**
- * @author rohanagarwal
+ * @author tanvi.sharma
  *
  */
+@SuppressWarnings("unused")
 public class DBUtil {
 	
 	  static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; 
@@ -34,7 +35,7 @@ public class DBUtil {
      * Get connection of SQL Database
      * @return -> Connection
      */
-	@SuppressWarnings("unused")
+
 	public static Connection getConnection() {
 		
 		Connection connection = null;

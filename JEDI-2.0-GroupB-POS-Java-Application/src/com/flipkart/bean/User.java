@@ -10,7 +10,7 @@ import com.flipkart.constant.GenderConstant;
 import com.flipkart.constant.RoleConstant;
 
 /**
- * @author rohanagarwal
+ * @author ansh.aggarwal
  *
  */
 public abstract class User {

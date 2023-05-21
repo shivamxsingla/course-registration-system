@@ -7,6 +7,7 @@ package com.flipkart.exception;
  * to be called during login
  *
  */
+@SuppressWarnings("serial")
 public class StudentNotFoundException extends Exception {
 	private String studentId;
 

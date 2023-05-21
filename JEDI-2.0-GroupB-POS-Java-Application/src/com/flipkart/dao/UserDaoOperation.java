@@ -26,9 +26,10 @@ import com.flipkart.utils.DBUtil;
 import com.flipkart.constant.*;
 
 /**
- * @author Shubham
+ * @author ramasamy.kandasamy
  *
  */
+@SuppressWarnings("unused")
 public class UserDaoOperation implements UserDaoInterface{
 	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
 

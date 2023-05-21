@@ -8,7 +8,7 @@ import java.util.List;
 import com.flipkart.bean.Notification;
 
 /**
- * @author Shubham
+ * @author divy.soni
  *
  */
 public interface NotificationDaoInterface {

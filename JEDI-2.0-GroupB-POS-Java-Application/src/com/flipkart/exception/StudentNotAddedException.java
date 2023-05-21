@@ -4,9 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * @author Shubham
+ * @author shivam.singla
  *
  */
+@SuppressWarnings("serial")
 public class StudentNotAddedException extends Exception {
 
 	private String studentId;
