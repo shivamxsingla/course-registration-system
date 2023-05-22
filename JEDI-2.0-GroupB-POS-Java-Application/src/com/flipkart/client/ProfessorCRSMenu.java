@@ -37,6 +37,7 @@ public class ProfessorCRSMenu {
 	 */
 	public void displayMenu() {
 		// Display the options available for the Professor
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {
@@ -67,7 +68,7 @@ public class ProfessorCRSMenu {
 				break;
 			case 4:
 				// Logout
-				sc.close();
+				//// sc.close();				
 				System.out.println("==================== Logging Out ====================");
 				return;
 			default:
@@ -110,7 +111,7 @@ public class ProfessorCRSMenu {
 		catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		sc.close();
+		// sc.close();
 	}
 
 	/**
@@ -131,6 +132,6 @@ public class ProfessorCRSMenu {
 			System.err.println(e.getMessage());
 		}
 	
-	sc.close();
+	// sc.close();
 	}
 }

@@ -15,3 +15,56 @@
 23:01:15,303  INFO UserDaoOperation,main:73 - User with userId shivam.singla does not exist
 23:02:02,110  INFO UserDaoOperation,main:73 - User with userId shivam.singla does not exist
 23:02:30,994  INFO AdminDaoOperation,main:733 - 1 student approved.
+23:57:51,591  INFO AdminDaoOperation,main:229 - 1 user added.
+23:57:51,593  INFO AdminDaoOperation,main:235 - User with userId: ramasamy added.
+23:57:51,616  INFO AdminDaoOperation,main:176 - 1 professor added.
+23:57:51,616  INFO AdminDaoOperation,main:182 - Professor with professorId: 2 added.
+01:52:15,406  INFO AdminDaoOperation,main:733 - 1 student approved.
+01:54:59,064  INFO AdminDaoOperation,main:733 - 1 student approved.
+01:55:44,904  INFO AdminDaoOperation,main:229 - 1 user added.
+01:55:44,905  INFO AdminDaoOperation,main:235 - User with userId: jatin added.
+01:55:44,927  INFO StudentDaoOperation,main:74 - 1 student added.
+01:55:44,928  INFO StudentDaoOperation,main:80 - User with userId: jatin added.
+02:03:32,978  INFO AdminDaoOperation,main:733 - 1 student approved.
+02:15:58,781 ERROR AdminDaoOperation,main:82 - Cannot add or update a child row: a foreign key constraint fails (`crsdatabase`.`coursecatalogue`, CONSTRAINT `coursecatalogue_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `professors` (`id`))
+02:22:26,234 ERROR AdminDaoOperation,main:82 - Cannot add or update a child row: a foreign key constraint fails (`crsdatabase`.`coursecatalogue`, CONSTRAINT `coursecatalogue_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `professors` (`id`))
+02:26:03,605  INFO AdminDaoOperation,main:73 - 1 course added
+02:26:03,606  INFO AdminDaoOperation,main:79 - Course with courseCode : 54 is added to catalog.
+02:26:33,463  INFO AdminDaoOperation,main:769 - Professor list generated
+02:27:04,893  INFO AdminDaoOperation,main:404 - 1 entries updated.
+02:27:04,893  INFO AdminDaoOperation,main:410 - Prof with userId: 2 assigned to course : 54
+02:27:58,987  INFO AdminDaoOperation,main:73 - 1 course added
+02:27:58,987  INFO AdminDaoOperation,main:79 - Course with courseCode : 11 is added to catalog.
+02:29:28,152  INFO AdminDaoOperation,main:73 - 1 course added
+02:29:28,152  INFO AdminDaoOperation,main:79 - Course with courseCode : 100 is added to catalog.
+02:29:43,261  INFO AdminDaoOperation,main:769 - Professor list generated
+02:29:54,795  INFO AdminDaoOperation,main:404 - 1 entries updated.
+02:29:54,795  INFO AdminDaoOperation,main:410 - Prof with userId: 10 assigned to course : 100
+02:30:08,238  INFO AdminDaoOperation,main:117 - 1 entries deleted
+02:30:08,238  INFO AdminDaoOperation,main:122 - Course with course code : 1 deleted.
+02:30:55,257  INFO AdminDaoOperation,main:769 - Professor list generated
+02:31:13,712  INFO AdminDaoOperation,main:276 - 1 entries deleted.
+02:31:13,719  INFO AdminDaoOperation,main:288 - 1 entries deleted.
+02:31:13,720  INFO AdminDaoOperation,main:294 - Prof with userId: 20 deleted.
+02:31:46,730  INFO AdminDaoOperation,main:733 - 1 student approved.
+02:32:14,995  INFO AdminDaoOperation,main:341 - 1 entries deleted.
+02:32:14,997  INFO AdminDaoOperation,main:353 - 1 entries deleted.
+02:32:14,997  INFO AdminDaoOperation,main:359 - User with userId: 46 deleted.
+02:33:24,449  INFO UserDaoOperation,main:71 - Entered incorrect password
+02:34:04,030  INFO UserDaoOperation,main:71 - Entered incorrect password
+02:44:25,608 ERROR NotificationDaoOperation,main:75 - Duplicate entry '21' for key 'chosencourse.PRIMARY'
+02:45:50,540  INFO RegistrationOperation,main:61 - Courses sent for validation
+02:48:47,696  INFO AdminDaoOperation,main:686 - Validation complete!
+02:50:31,169  INFO UserDaoOperation,main:71 - Entered incorrect password
+09:54:11,455  INFO AdminDaoOperation,main:73 - 1 course added
+09:54:11,457  INFO AdminDaoOperation,main:79 - Course with courseCode : 1000 is added to catalog.
+09:54:23,025  INFO AdminDaoOperation,main:769 - Professor list generated
+09:54:43,449  INFO AdminDaoOperation,main:404 - 1 entries updated.
+09:54:43,449  INFO AdminDaoOperation,main:410 - Prof with userId: 9 assigned to course : 1000
+09:57:03,492  INFO AdminDaoOperation,main:733 - 1 student approved.
+09:58:19,923  INFO RegistrationOperation,main:61 - Courses sent for validation
+10:00:08,270  INFO AdminDaoOperation,main:686 - Validation complete!
+10:00:23,227  INFO NotificationOperation,main:44 - ______________________
+10:00:23,228  INFO NotificationOperation,main:45 - Result of payment: 
+10:00:23,228  INFO NotificationOperation,main:46 - Payment done for student with id 24 via Scholarship
+10:00:23,228  INFO NotificationOperation,main:47 - ______________________

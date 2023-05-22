@@ -34,6 +34,8 @@ public class CRSApplication {
 	 */
 	private static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) {
+		
+		System.out.println("\n==========================Course Registration System===============================\n");
 		showMainMenu();
 	}
 
@@ -50,7 +52,8 @@ public class CRSApplication {
 			System.out.println("3. Exit");
 			System.out.println("\n==========================================================================\n");
 			System.out.println("Enter Option : ");
-//			try {
+
+			
 				String optionChosen = scanner.nextLine();
 				switch(optionChosen) {		
 				case "1":
@@ -67,10 +70,7 @@ public class CRSApplication {
 				default:
 					System.err.println("Invalid Option.");
 				}
-//			}
-//			catch(Exception e) {
-//				System.err.println("Invalid Option");
-//			}
+
 		}
 			
 	}

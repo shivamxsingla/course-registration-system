@@ -94,7 +94,7 @@ public class StudentCRSMenu {
 				break;
 
 			case 9:
-				sc.close();
+				//sc.close();
 				System.out.println("==================== Logging Out ====================");
 				return;
 
@@ -183,7 +183,7 @@ public class StudentCRSMenu {
 			courseIDs.put(sc.nextInt(), false);
 			
 			registrationInterface.registerCourses(studentID, courseIDs);
-			sc.close();
+			//sc.close();
 		}
 		catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -210,7 +210,7 @@ public class StudentCRSMenu {
 		catch(Exception e) {
 			System.err.println(e.getMessage());
 		}
-		sc.close();
+		//sc.close();
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class StudentCRSMenu {
 		catch(Exception e) {
 			System.err.println(e.getMessage());
 		}
-		sc.close();
+		//sc.close();
 	}
 
 	/**
@@ -301,7 +301,7 @@ public class StudentCRSMenu {
 		catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		sc.close();
+		//sc.close();
 	}
 
 	/**
