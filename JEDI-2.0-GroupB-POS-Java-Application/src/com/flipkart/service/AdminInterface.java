@@ -1,5 +1,9 @@
 package com.flipkart.service;
 
+/**
+ * @author Group-B
+ *
+ */
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
@@ -72,12 +76,6 @@ public interface AdminInterface {
      * @return List of courses in CourseCatalogue
      */
     public List<Course> viewCourses();
-
-    /**
-     * Method to ensure no course has less than three registered students
-     * @throws DatabaseException
-     */
-    public void validateRegistration() throws DatabaseException;
 
     /**
      * Method to approve Student

@@ -14,9 +14,10 @@ import com.flipkart.service.ProfessorInterface;
 import com.flipkart.service.ProfessorOperation;
 
 /**
- * @author ansh.aggarwal
+ * @author Group-B
  *
  */
+
 public class ProfessorCRSMenu {
 
 //	private static Logger logger = Logger.getLogger(ProfessorMenu.class);
@@ -68,7 +69,7 @@ public class ProfessorCRSMenu {
 				break;
 			case 4:
 				// Logout
-				//// sc.close();				
+//				sc.close();
 				System.out.println("==================== Logging Out ====================");
 				return;
 			default:
@@ -98,6 +99,7 @@ public class ProfessorCRSMenu {
 	 * View all students registered in a given course
 	 */
 	private void viewStudents() {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		try{
 			System.out.println("Enter CourseID : ");
@@ -111,13 +113,13 @@ public class ProfessorCRSMenu {
 		catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		// sc.close();
 	}
 
 	/**
 	 * Assign Grades to a student
 	 */
 	private void assignGrades() {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Course ID : ");
 		int courseID = sc.nextInt();
@@ -131,7 +133,5 @@ public class ProfessorCRSMenu {
 		catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-	
-	// sc.close();
 	}
 }

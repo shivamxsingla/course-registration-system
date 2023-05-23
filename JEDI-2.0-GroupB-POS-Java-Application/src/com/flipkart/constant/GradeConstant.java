@@ -4,9 +4,10 @@
 package com.flipkart.constant;
 
 /**
- * @author shivam.singla
+ * @author Group-B
  *
  */
+
 public enum GradeConstant {
 	A1(10),
     A2(9),

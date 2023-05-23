@@ -1,5 +1,9 @@
 package com.flipkart.dao;
 
+/**
+ * @author Group-B
+ *
+ */
 
 import java.util.HashMap;
 import java.util.List;
@@ -59,7 +63,7 @@ public interface RegistrationDaoInterface {
 	 * @param studentId -> Student ID of student whose fees are calculated
 	 * @return Fee to be paid
 	 */
-	public float calculateFee(String studentId) throws StudentNotFoundException;
+	public int calculateFee(String studentId) throws StudentNotFoundException;
 
 	/**
 	 * Confirm the payment made

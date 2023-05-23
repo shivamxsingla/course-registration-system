@@ -4,10 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * @author ansh.aggarwal
+ * @author Group-B
  *
  */
-@SuppressWarnings("serial")
+
 public class RegistrationNotCompleteException extends Exception{
 	private String studentId;
 

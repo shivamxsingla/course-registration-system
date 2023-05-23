@@ -4,12 +4,13 @@
 package com.flipkart.constant;
 
 /**
- * @author tanvi.sharma
+ * @author Group-B
  *
  */
+
 public enum ModeOfPaymentConstant {
 
-	CREDIT_CARD,NET_BANKING,DEBIT_CARD;
+	CREDIT_CARD,NET_BANKING,DEBIT_CARD, CASH, SCHOLORSHIP, CHEQUE;
 	
 	/**
 	 * Method to get Mode of Payment
@@ -19,13 +20,19 @@ public enum ModeOfPaymentConstant {
 	public static ModeOfPaymentConstant getModeofPayment(int value)
 	{
 		switch(value)
-		{
+		{   
+			case 0:
+				return ModeOfPaymentConstant.CASH;
 			case 1:
 				return ModeOfPaymentConstant.CREDIT_CARD;
 			case 2:
 				return ModeOfPaymentConstant.NET_BANKING;
 			case 3:
 				return ModeOfPaymentConstant.DEBIT_CARD;
+			case 4: 
+				return ModeOfPaymentConstant.SCHOLORSHIP;
+			case 5:
+				return ModeOfPaymentConstant.CHEQUE;
 			default:
 				return null;
 				
@@ -46,6 +53,12 @@ public enum ModeOfPaymentConstant {
 				return "Net Banking";
 			case DEBIT_CARD:
 				return "Debit Card";
+			case CASH:
+				return "Cash";
+			case SCHOLORSHIP:
+				return "Scholorship";
+			case CHEQUE:
+				return "Cheque";
 			default:
 				return "Invalid Mode";
 			

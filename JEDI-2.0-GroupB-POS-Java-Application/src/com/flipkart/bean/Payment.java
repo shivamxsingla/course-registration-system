@@ -2,13 +2,16 @@
  * 
  */
 package com.flipkart.bean;
-
+/**
+ * @author Group-B
+ *
+ */
 import java.util.Random;
 
 import com.flipkart.constant.ModeOfPaymentConstant;
 
 /**
- * @author tanvi.sharma
+ * @author Shubham
  *
  */
 public class Payment {
@@ -30,6 +33,7 @@ public class Payment {
 		this.amount = amount;
 		Random rand = new Random();
 		paymentId = rand.nextInt();
+		paymentId =  Math.abs(paymentId);
 		this.status = true;
 	}
 

@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.RegisteredCourse;
 import com.flipkart.exception.*;
+import com.flipkart.service.NotificationOperation;
 import com.flipkart.utils.DBUtil;
 
 import java.sql.Connection;
@@ -26,9 +27,10 @@ import java.time.LocalDate;
 import java.time.Year;
 
 /**
- * @author cyrus.dwivedi
+ * @author Group-B
  *
  */
+
 public class RegistrationDaoOperation implements RegistrationDaoInterface {
 	private static Logger logger = Logger.getLogger(NotificationDaoOperation.class);
 
@@ -61,14 +63,38 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 	public void registerCourses(String studentId, HashMap<Integer,Boolean> courseIDs) throws StudentNotFoundException{
 		 Connection conn = DBUtil.getConnection();
 		 try 
-		 {      
+		 {   
+			 int totalfee = 0;
 			 for (Map.Entry<Integer,Boolean> courseElement : courseIDs.entrySet()) {
-				 statement = conn.prepareStatement(SQLQueriesConstant.CHOOSE_COURSE);
+				    statement = conn.prepareStatement(SQLQueriesConstant.ADD_COURSE);
 		            statement.setString(1, studentId);
 		            statement.setInt(2, courseElement.getKey());
-		            statement.setBoolean(3, courseElement.getValue());
+		            statement.setInt(3, Year.now().getValue());
+		            statement.setInt(4, (LocalDate.now().getMonthValue()>6?2:1));
 		            statement.executeUpdate();
+		            
+		            statement = conn.prepareStatement(SQLQueriesConstant.INCREMENT_COURSE_SEATS);
+		            statement.setInt(1, courseElement.getKey());
+		            statement.executeUpdate();
+		            
+		            statement = conn.prepareStatement(SQLQueriesConstant.SET_REGISTRATION_STATUS);
+		            statement.setString(1, studentId);
+		            statement.executeUpdate();
+		            
+		            statement = conn.prepareStatement(SQLQueriesConstant.GET_FEES);
+		            statement.setInt(1, courseElement.getKey());
+		            ResultSet rs = statement.executeQuery();
+		            
+		            if(rs.next()) {
+		            	totalfee += rs.getInt("fees");
+		            }
+		            
 			 }
+			 statement = conn.prepareStatement(SQLQueriesConstant.UPDATE_AMOUNT);
+			 statement.setInt(1, totalfee);
+			 statement.setString(2, studentId);
+			 statement.executeUpdate();
+			
 		 }
 		 catch (SQLException e) 
          {
@@ -107,7 +133,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
             	throw new CourseNotFoundException(courseId); 
             else
             {
-            	Course course = new Course(rs.getInt("cid"), rs.getString("cname"), rs.getString("pid"), UserDaoOperation.getInstance().getDetails(rs.getString("pid")).getName(), rs.getInt("filledSeats"));
+            	Course course = new Course(rs.getInt("cid"), rs.getString("cname"), rs.getString("pid"), UserDaoOperation.getInstance().getDetails(rs.getString("pid")).getName(), rs.getInt("filledSeats"), rs.getInt("fees"));
             	return course;
             }
         }
@@ -163,6 +189,22 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
             statement = conn.prepareStatement(SQLQueriesConstant.INCREMENT_COURSE_SEATS);
             statement.setInt(1, courseCode);
             statement.executeUpdate();
+            
+            statement = conn.prepareStatement(SQLQueriesConstant.GET_FEES);
+            statement.setInt(1, courseCode);
+            ResultSet rs = statement.executeQuery();
+            int totalfee=0;
+            if(rs.next()) {
+            	totalfee = rs.getInt("fees");
+            }
+             
+	       statement = conn.prepareStatement(SQLQueriesConstant.UPDATE_AMOUNT);
+	       statement.setInt(1, totalfee);
+	       statement.setString(2, studentId);
+	       statement.executeUpdate();
+           
+			
+	       
             return true;
         }
         catch (SQLException e) 
@@ -205,7 +247,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
             statement.execute();
             
             statement.close();
-            
+          
             return true;
         }
         catch (SQLException e) 
@@ -278,9 +320,35 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
      * @return Fee to be paid
      */
 	@Override
-	public float calculateFee(String studentId) throws StudentNotFoundException{
-		int num_courses = viewRegisteredCourses(studentId).size();;
-		return num_courses * SQLQueriesConstant.feesPerCourse;
+	public int calculateFee(String studentId) throws StudentNotFoundException{
+		Connection conn = DBUtil.getConnection();
+		int fees=0;
+		try 
+		{
+			statement = conn.prepareStatement(SQLQueriesConstant.GET_PENDING_AMOUNT);
+			statement.setString(1, studentId);
+			ResultSet rs = statement.executeQuery();
+			if(rs.next()) {
+				fees=rs.getInt("amount");
+			}
+		} 
+		catch (SQLException e) 
+        {
+            logger.error(e.getMessage());
+            throw new StudentNotFoundException(studentId);
+        }
+        finally
+        {
+            try{
+                statement.close();
+                conn.close();
+            }
+            catch(Exception e){
+                logger.error("Couldn't close connection to database");
+                logger.error(e.getMessage());
+            }
+        }
+		return fees;
 	}
 
     /**
@@ -361,14 +429,15 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 	@Override
 	public boolean isPaymentDone(String studentId) throws StudentNotFoundException  {
 		Connection conn = DBUtil.getConnection();
-		boolean paid;
+		int paid=1;
 		try 
 		{
 			statement = conn.prepareStatement(SQLQueriesConstant.GET_STUDENT_DETAILS_QUERY);
 			statement.setString(1, studentId);
 			ResultSet rs = statement.executeQuery();
-			rs.next();
-			paid = rs.getBoolean("paymentIsDone");
+			if(rs.next()) {
+				paid = rs.getInt("amount");	
+			}
 		} 
 		catch (SQLException e) 
         {
@@ -386,7 +455,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
                 logger.error(e.getMessage());
             }
         }
-		return paid;
+		return paid==0;
 	}
 
     /**

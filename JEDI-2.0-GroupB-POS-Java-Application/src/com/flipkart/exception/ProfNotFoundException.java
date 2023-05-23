@@ -1,9 +1,10 @@
 package com.flipkart.exception;
 
 /**
- * Exception class for when removing a prof that does not exist in the database
+ * @author Group-B
+ *
  */
-@SuppressWarnings("serial")
+
 public class ProfNotFoundException extends Exception {
     private String ProfID;
 

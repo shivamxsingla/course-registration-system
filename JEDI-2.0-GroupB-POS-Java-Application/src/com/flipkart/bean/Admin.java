@@ -1,4 +1,9 @@
 package com.flipkart.bean;
+/**
+ * @author Group-B
+ *
+ */
+
 import java.util.Date;
 
 import com.flipkart.constant.RoleConstant;

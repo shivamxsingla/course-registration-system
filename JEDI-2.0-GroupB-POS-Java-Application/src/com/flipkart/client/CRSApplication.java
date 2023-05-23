@@ -2,8 +2,7 @@
  * 
  */
 package com.flipkart.client;
-
-import java.text.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -12,19 +11,21 @@ import com.flipkart.constant.GenderConstant;
 import com.flipkart.constant.RoleConstant;
 import com.flipkart.dao.StudentDaoInterface;
 import com.flipkart.dao.StudentDaoOperation;
+import com.flipkart.dao.UserDaoInterface;
+import com.flipkart.dao.UserDaoOperation;
 import com.flipkart.exception.PasswordMismatchException;
 import com.flipkart.exception.StudentNotFoundException;
 import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.service.StudentInterface;
 import com.flipkart.service.StudentOperation;
 import com.flipkart.service.UserOperation;
-
-import org.apache.log4j.Logger;
-
+import java.time.*;
+import java.util.Date;
 /**
- * @author shivam.singla
+ * @author Group-B
  *
  */
+
 @SuppressWarnings("unused")
 public class CRSApplication {
 
@@ -34,8 +35,6 @@ public class CRSApplication {
 	 */
 	private static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) {
-		
-		System.out.println("\n==========================Course Registration System===============================\n");
 		showMainMenu();
 	}
 
@@ -49,11 +48,10 @@ public class CRSApplication {
 			System.out.println("Welcome to the Course Registration System");
 			System.out.println("1. Login");
 			System.out.println("2. Student Registration");
-			System.out.println("3. Exit");
+			System.out.println("3. Update Password");
+			System.out.println("4. Exit");
 			System.out.println("\n==========================================================================\n");
 			System.out.println("Enter Option : ");
-
-			
 				String optionChosen = scanner.nextLine();
 				switch(optionChosen) {		
 				case "1":
@@ -63,23 +61,43 @@ public class CRSApplication {
 				case "2":
 					signup();
 					break;
-
 				case "3":
+					updatepassword();
+					break;
+				case "4":
 					exit();
 					return;
 				default:
 					System.err.println("Invalid Option.");
 				}
-
 		}
 			
+	}
+
+	private static void updatepassword() {
+		try {
+			UserDaoInterface UserDaoInterface = UserDaoOperation.getInstance();
+
+			System.out.println("Enter User ID : ");
+			String uid = scanner.nextLine();
+			System.out.println("Enter the Old Password : ");
+			String old_pass = scanner.nextLine();
+			System.out.println("Enter New Password : ");
+			String pass = scanner.nextLine();
+			
+			UserDaoInterface.updateUserPassword(uid, old_pass, pass);
+			System.out.println("Your Password has been Successfully Updated.");
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 	/**
 	 * Method to exit application
 	 */
 	private static void exit() {
-		System.out.println("Thank you for using the program!");
+		System.out.println("Exit Application");
 	}
 
 	/**
@@ -163,7 +181,11 @@ public class CRSApplication {
 					if (studentInterface.isApproved(userId)) {
 						StudentCRSMenu sm = new StudentCRSMenu(userId);
 						System.out.println("Student Logged in successfully with user ID: " + userId);
+						Date currentDate = new Date();
+						System.out.println("Last Login: "+currentDate);
 						sm.displayMenu();
+						
+						
 					} else {
 						System.err.println("Login Failed.");
 						System.err.println("Waiting for approval.");
@@ -176,13 +198,19 @@ public class CRSApplication {
 			{
 				ProfessorCRSMenu pm = new ProfessorCRSMenu(userId);
 				System.out.println("Professor Logged in successfully with user ID: " + userId);
+				Date currentDate = new Date();
+				System.out.println("Last Login: "+currentDate);
 				pm.displayMenu();
+				
 			}
 			else if (role == RoleConstant.Admin)
 			{
 				AdminCRSMenu am = new AdminCRSMenu();
 				System.out.println("Admin Logged in successfully with user ID: " + userId);
+				Date currentDate = new Date();
+				System.out.println("Last Login: "+currentDate);
 				am.printAdminMenu();
+	
 			}
 		}
 	}

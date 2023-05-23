@@ -2,7 +2,11 @@
  * 
  */
 package com.flipkart.service;
-
+import java.util.Date;
+/**
+ * @author Group-B
+ *
+ */
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,11 +32,15 @@ import com.flipkart.exception.StudentNotFoundException;
 import com.flipkart.dao.RegistrationDaoInterface;
 import com.flipkart.dao.RegistrationDaoOperation;
 
+import java.text.ParseException;  
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
+import java.util.Locale;  
+
 /**
- * @author shivam.singla
+ * @author shubh
  *
  */
-@SuppressWarnings("unused")
 public class RegistrationOperation implements RegistrationInterface {
 	private static Logger logger = Logger.getLogger(RegistrationOperation.class);
 
@@ -58,7 +66,11 @@ public class RegistrationOperation implements RegistrationInterface {
 			return false;
 		}
 		registrationDaoInterface.registerCourses(studentId, courseIDs);
-		logger.info("Courses sent for validation");
+		logger.info("You have successfully registed for the current semester. Kindly make the Payment.");
+		Date date_ = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z");  
+		String date= formatter.format(date_);
+		 NotificationOperation.getInstance().sendNotification(studentId, "Registration", "You have sucessfully registered at "+date);
 		return true;
 	}
 	
@@ -68,7 +80,7 @@ public class RegistrationOperation implements RegistrationInterface {
 	}
 	
 	@Override
-	public boolean isPaymentDone (String studentId) throws StudentNotFoundException
+	public boolean isPaymentDone(String studentId) throws StudentNotFoundException
 	{
 		return registrationDaoInterface.isPaymentDone(studentId);
 	}
@@ -87,6 +99,10 @@ public class RegistrationOperation implements RegistrationInterface {
 			throw new CourseLimitExceededException(Student.MAX_COURSES);
 		}
 		registrationDaoInterface.addCourse(studentId, courseCode);
+		Date date_ = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z");  
+		String date= formatter.format(date_);
+		 NotificationOperation.getInstance().sendNotification(studentId, "Registration", "You have sucessfully added the course at "+date);
 		return true;
 	}
 
@@ -106,6 +122,10 @@ public class RegistrationOperation implements RegistrationInterface {
 			throw new CourseNotFoundException(courseCode);
 		}
 		registrationDaoInterface.dropCourse(studentId, courseCode);
+		Date date_ = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z");  
+		String date= formatter.format(date_);
+		 NotificationOperation.getInstance().sendNotification(studentId, "Registration", "You have sucessfully dropped the course at "+date);
 		return true;
 	}
 
@@ -115,23 +135,23 @@ public class RegistrationOperation implements RegistrationInterface {
 	}
 	
 	@Override
-	public float calculateFee(String studentId) throws StudentNotFoundException{
+	public int calculateFee(String studentId) throws StudentNotFoundException{
 		return registrationDaoInterface.calculateFee(studentId);
 	}
 
 	@Override
-	public void payFee(String studentId, ModeOfPaymentConstant mode, float amount) throws StudentNotFoundException, NotifIdNotExistsException{
+	public void payFee(String studentId, ModeOfPaymentConstant mode, int amount, String creds) throws StudentNotFoundException, NotifIdNotExistsException{
 		float feeToBePaid = calculateFee(studentId);
 		String message;
-//		PaymentNotification notifObj = new PaymentNotification();
+
 		if(!registrationDaoInterface.isRegistrationDone(studentId)) {
 			// should not happen in current code
-			message = "Registration not yet complete";
+			message = "Registration not Yet Complete";
 //			throw new RegistrationNotCompleteException(studentId);
 		}
 		else if(registrationDaoInterface.isPaymentDone(studentId)) {
 			// should not happen in current code
-			message = "Payment already done";
+			message = "Payment Already Done";
 //			throw new PaymentAlreadyDoneException(studentId);
 		}else if(amount != feeToBePaid) {
 			// should not happen in current code
@@ -140,17 +160,17 @@ public class RegistrationOperation implements RegistrationInterface {
 			Payment payObj = new Payment(studentId, mode, amount);
 			if(payObj.isStatus()) {
 				registrationDaoInterface.feePaid(studentId);
-				message = "Payment Successful! Transaction Id: " + payObj.getPaymentId() + " Thank You";
+				message = "Payment Successful! Payment has been via the Transaction Id: " + payObj.getPaymentId();
 			}else {
 				message = "Payment Failed! Try again later";
 			}
 			
 		}
-		NotificationOperation.getInstance().sendNotification(studentId, "payment", message);
-//		NotificationOperation NotifOp = new NotificationOperation();
-		//Notification to be sent here
-//		NotifOp.sendNotification(notifObj);
+		NotificationOperation.getInstance().sendNotification(studentId, "Payment", message);
+		PaymentOperation.getInstance().sendPayment(studentId, amount, mode, creds);
+
 	}
+
 
 
 }

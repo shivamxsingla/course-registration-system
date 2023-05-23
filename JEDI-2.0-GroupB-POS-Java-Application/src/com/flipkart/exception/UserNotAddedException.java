@@ -4,10 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * @author divy.soni
+ * @author Group-B
  *
  */
-@SuppressWarnings("serial")
+
 public class UserNotAddedException extends Exception {
 
 	private String userId;

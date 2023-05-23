@@ -4,10 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * to be called during login
+ * @author Group-B
  *
  */
-@SuppressWarnings("serial")
+
 public class UserNotFoundException extends Exception {
 	private String userId;
 

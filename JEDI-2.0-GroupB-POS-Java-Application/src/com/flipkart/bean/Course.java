@@ -4,7 +4,7 @@
 package com.flipkart.bean;
 
 /**
- * @author ramasamy.kandasamy
+ * @author Group-B
  *
  */
 public class Course {
@@ -15,22 +15,26 @@ public class Course {
 	private String instructorName;
 	public static final int MAX_SEATS = 10;
 	private int filledSeats;
+	private int fees;
 
 	/**
 	 * Constructor
 	 * @param courseId
 	 * @param courseName
 	 * @param instructorId
-	 * @param instructorName
+	 * @param b
 	 * @param filledSeats
 	 */
-	public Course(int courseId, String courseName, String instructorId, String instructorName, int filledSeats) {
+	public Course(int courseId, String courseName, String instructorId, String instructorName , int filledSeats, int fees) {
 		this.courseId = courseId;
 		this.courseName = courseName;
 		this.instructorId = instructorId;
 		this.instructorName = instructorName;
 		this.filledSeats = filledSeats;
+		this.setFees(fees);
 	}
+
+
 
 	/**
 	 * getter of courseID
@@ -110,6 +114,24 @@ public class Course {
 	 */
 	public void setFilledSeats(int seats) {
 		this.filledSeats = seats;
+	}
+
+
+
+	/**
+	 * @return the fees
+	 */
+	public int getFees() {
+		return fees;
+	}
+
+
+
+	/**
+	 * @param fees the fees to set
+	 */
+	public void setFees(int fees) {
+		this.fees = fees;
 	}
 	
 }

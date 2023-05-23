@@ -1,5 +1,8 @@
 package com.flipkart.service;
-
+/**
+ * @author Group-B
+ *
+ */
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
@@ -96,73 +99,7 @@ public class AdminOperation implements AdminInterface{
     /**
      * Method to ensure no course has less than three registered students
      */
-    @Override
-    public void validateRegistration() throws DatabaseException {
-    	try {
-    		HashMap<String,List<Integer>> alterCourses = adminDaoInterfaceImpl.getAlternateCourses();
-        	HashMap<String,List<Integer>> prefCourses = adminDaoInterfaceImpl.getPreferredCourses();
-        	HashMap<String,Integer> coursesNeeded = new HashMap<>();
-        	HashSet<String> studentIDs = new HashSet<>();
-        	
-        	for (@SuppressWarnings("rawtypes") HashMap.Entry mapElement :prefCourses.entrySet()) {
-                String studentID = (String)mapElement.getKey();
-                @SuppressWarnings("unchecked")
-				List<Integer> courses = (List<Integer>)mapElement.getValue();
-                for(Integer courseCode:courses) {
-            		Course course = RegistrationDaoOperation.getInstance().getCourse(courseCode);
-            		if(course.getFilledSeats()<Course.MAX_SEATS){
-            			if(coursesNeeded.containsKey(studentID)) {
-            				coursesNeeded.put(studentID, coursesNeeded.get(studentID)-1);
-            			}
-            			else {
-            				coursesNeeded.put(studentID, 3);
-            			}
-            			studentIDs.add(studentID);
-            			RegistrationDaoOperation.getInstance().addCourse(studentID, courseCode);
-            		}
-                }
-        	}
-        	
-        	for (@SuppressWarnings("rawtypes") HashMap.Entry mapElement :alterCourses.entrySet()) {
-                String studentID = (String)mapElement.getKey();
-                @SuppressWarnings("unchecked")
-				List<Integer> courses = (List<Integer>)mapElement.getValue();
-                for(Integer courseCode:courses) {
-            		Course course = RegistrationDaoOperation.getInstance().getCourse(courseCode);
-            		if(course.getFilledSeats()<Course.MAX_SEATS){
-            			if(coursesNeeded.get(studentID)==null) {
-                			RegistrationDaoOperation.getInstance().addCourse(studentID, courseCode);
-            			}
-            			else if(coursesNeeded.get(studentID)!=0) {
-            				if(coursesNeeded.containsKey(studentID)) {
-                				coursesNeeded.put(studentID, coursesNeeded.get(studentID)-1);
-                			}
-                			else {
-                				coursesNeeded.put(studentID, 3);
-                			}
-                			studentIDs.add(studentID);
-                			RegistrationDaoOperation.getInstance().addCourse(studentID, courseCode);
-            			}
-            		}
-                }
-        	}
-        	adminDaoInterfaceImpl.validateRegistration();
-        	adminDaoInterfaceImpl.deleteChosenCourses();
-        	studentIDs.forEach((k) -> 
-        	{
-        		NotificationOperation.getInstance().sendNotification(k, "registration", "Your courses have been validated, check registered courses.");
-        		try{
-        			adminDaoInterfaceImpl.setRegistrationStatus(k);
-    			}catch(Exception e) {
-    				System.err.println("Failure.");
-    			}
-    		});      	
-    	}
-    	catch(Exception e) {
-    		throw new DatabaseException();
-    	}
-    }
-
+   
     @Override
     public void generateReportCard(String studentID) throws StudentNotFoundException {
         try {

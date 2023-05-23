@@ -13,9 +13,10 @@ import com.flipkart.exception.StudentNotFoundException;
 import com.flipkart.exception.UserNotFoundException;
 
 /**
- * @author ramasamy.kandasamy
- * User Dao Interface
+ * @author Group-B
+ *
  */
+
 public interface UserDaoInterface {
 
     /**
@@ -47,5 +48,7 @@ public interface UserDaoInterface {
      * @throws ProfNotFoundException
      */
     public User getDetails(String userId) throws UserNotFoundException, StudentNotFoundException, ProfNotFoundException;
+
+	public void updateUserPassword(String uid, String old_pass, String pass) throws PasswordMismatchException, PasswordMatchedOldException, UserNotFoundException, PasswordIsWeakException;
 	
 }

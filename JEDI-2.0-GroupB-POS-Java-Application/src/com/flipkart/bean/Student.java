@@ -9,9 +9,10 @@ import com.flipkart.constant.GenderConstant;
 import com.flipkart.constant.RoleConstant;
 
 /**
- * @author shivam.singla
+ * @author Group-B
  *
  */
+
 public class Student extends User {
 	String branch;
 	int batchYear;

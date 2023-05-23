@@ -1,5 +1,9 @@
 package com.flipkart.dao;
 
+/**
+ * @author Group-B
+ *
+ */
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
@@ -71,20 +75,7 @@ public interface AdminDaoInterface {
      * @return -> Map containing student ID and corresponding alternate courses
      * @throws DatabaseException
      */
-    public HashMap<String,List<Integer>> getAlternateCourses() throws DatabaseException;
     
-
-    /**
-     * Get primary courses for registration of student
-     * @return -> Map containing student ID and corresponding primary courses
-     * @throws DatabaseException
-     */
-    public HashMap<String,List<Integer>> getPreferredCourses() throws DatabaseException;
-
-    /**
-     * Method to generate Report card of student using SQL command.
-     * @param studentID -> ID of student whose report card is being generated
-     */
     public void generateReportCard(String studentID) throws StudentNotFoundException;
 
     /**
@@ -99,11 +90,7 @@ public interface AdminDaoInterface {
      * For deleting the chosen courses
      * @throws SQLException
      */
-    public void deleteChosenCourses() throws SQLException;
-
-    /**
-     * Method to ensure no course has less than three registered students
-     */
+    
     public void validateRegistration() throws CourseNotDeletedException;
 
     /**

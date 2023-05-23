@@ -26,9 +26,10 @@ import com.flipkart.utils.DBUtil;
 import com.flipkart.constant.*;
 
 /**
- * @author shivam.singla
+ * @author Group-B
  *
  */
+
 @SuppressWarnings("unused")
 public class UserDaoOperation implements UserDaoInterface{
 	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
@@ -231,6 +232,49 @@ public class UserDaoOperation implements UserDaoInterface{
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void updateUserPassword(String uid, String old_pass, String pass) throws UserNotFoundException, PasswordMatchedOldException, PasswordIsWeakException, PasswordMismatchException {
+		Connection conn = DBUtil.getConnection();
+		try {
+			
+			User user = getDetails(uid);
+			if (!user.getPassword().equals(old_pass)) {
+				throw new PasswordMismatchException(old_pass);
+			}
+			
+			if (user.getPassword().equals (pass))
+				throw new PasswordMatchedOldException (uid);
+			
+			if (pass.length() < 4)
+				throw new PasswordIsWeakException(pass);
+			
+			String sql = SQLQueriesConstant.UPDATE_PASSWORD;
+			PreparedStatement updatePassword = conn.prepareStatement(sql);
+			updatePassword.setString(1, pass);
+			updatePassword.setString(2, uid);
+			updatePassword.executeUpdate();
+			
+		}
+		
+		catch(SQLException e)
+		{
+			logger.info(e.getMessage());
+		} catch (StudentNotFoundException e) {
+			logger.info(e.getMessage());
+		} catch (ProfNotFoundException e) {
+			logger.info(e.getMessage());
+		}
+		finally
+		{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				logger.info(e.getMessage());
+			}
+		}
+		
 	}
 
 }

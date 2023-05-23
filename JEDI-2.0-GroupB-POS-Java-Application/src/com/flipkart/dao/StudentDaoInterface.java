@@ -14,9 +14,10 @@ import com.flipkart.exception.StudentNotAddedException;
 import com.flipkart.exception.StudentNotFoundException;
 
 /**
- * @author tanvi.sharma
+ * @author Group-B
  *
  */
+
 @SuppressWarnings("unused")
 public interface StudentDaoInterface {
 	

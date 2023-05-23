@@ -6,9 +6,10 @@ package com.flipkart.bean;
 import com.flipkart.constant.GradeConstant;
 
 /**
- * @author cyrus.dwivedi
+ * @author Group-B
  *
  */
+
 public class RegisteredCourse {
 
 	String courseName, instructor, studentId;

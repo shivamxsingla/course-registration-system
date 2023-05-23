@@ -4,10 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * @author cyrus.dwivedi
+ * @author Group-B
  *
  */
-@SuppressWarnings("serial")
+
 public class ProfNotDeletedException extends Exception {
 	private String ProfID;
 

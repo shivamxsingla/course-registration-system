@@ -10,8 +10,10 @@ import com.flipkart.exception.StudentNotFoundException;
 import java.util.List;
 
 /**
- * Dao interface for professor operations
+ * @author Group-B
+ *
  */
+
 public interface ProfessorDaoInterface {
 
     /**

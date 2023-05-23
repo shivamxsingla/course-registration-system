@@ -4,7 +4,7 @@
 package com.flipkart.bean;
 
 /**
- * @author divy.soni
+ * @author Group-B
  *
  */
 public class Notification {

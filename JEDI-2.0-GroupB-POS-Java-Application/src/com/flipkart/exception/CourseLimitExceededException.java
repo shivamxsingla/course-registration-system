@@ -1,11 +1,9 @@
 package com.flipkart.exception;
 
 /**
- * Exception for when registered courses for a student becomes > 4
- * @author divy.soni
+ * @author Group-B
  *
  */
-@SuppressWarnings("serial")
 public class CourseLimitExceededException extends Exception {
 
 	private int num;

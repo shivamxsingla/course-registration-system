@@ -2,7 +2,10 @@
  * 
  */
 package com.flipkart.service;
-
+/**
+ * @author Group-B
+ *
+ */
 import com.flipkart.bean.User;
 import com.flipkart.constant.RoleConstant;
 import com.flipkart.dao.UserDaoOperation;
@@ -14,7 +17,7 @@ import com.flipkart.exception.StudentNotFoundException;
 import com.flipkart.exception.UserNotFoundException;
 
 /**
- * @author ansh.aggarwal
+ * @author Shubham
  *
  */
 public class UserOperation implements UserInterface {

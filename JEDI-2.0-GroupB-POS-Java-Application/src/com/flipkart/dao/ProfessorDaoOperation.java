@@ -18,8 +18,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 /**
- * Dao class for professor operations
+ * @author Group-B
+ *
  */
+
 public class ProfessorDaoOperation implements ProfessorDaoInterface{
 	private static Logger logger = Logger.getLogger(ProfessorDaoOperation.class);
 
@@ -63,7 +65,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 
             while (resultSet.next()){
                 courseList.add(new Course(resultSet.getInt("cid"),resultSet.getString("cname"),profID,
-                		UserDaoOperation.getInstance().getDetails(resultSet.getString("pid")).getName(),resultSet.getInt("filledSeats")));
+                		UserDaoOperation.getInstance().getDetails(resultSet.getString("pid")).getName(),resultSet.getInt("filledSeats"), resultSet.getInt("fees")));
             }
         }catch (Exception e){
             throw new ProfNotFoundException(profID);

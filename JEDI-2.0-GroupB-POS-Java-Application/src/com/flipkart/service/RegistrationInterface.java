@@ -2,7 +2,10 @@
  * 
  */
 package com.flipkart.service;
-
+/**
+ * @author Group-B
+ *
+ */
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,7 +14,7 @@ import com.flipkart.constant.ModeOfPaymentConstant;
 import com.flipkart.exception.*;
 
 /**
- * @author cyrus.dwivedi
+ * @author shubh
  *
  */
 public interface RegistrationInterface {
@@ -74,7 +77,7 @@ public interface RegistrationInterface {
 	 * @return fee
 	 * @throws StudentNotFoundException
 	 */
-	public float calculateFee(String studentId) throws StudentNotFoundException;
+	public int calculateFee(String studentId) throws StudentNotFoundException;
 
 	/**
 	 * pay fee
@@ -84,5 +87,7 @@ public interface RegistrationInterface {
 	 * @throws StudentNotFoundException
 	 * @throws NotifIdNotExistsException
 	 */
-	public void payFee(String studentId, ModeOfPaymentConstant mode, float amount) throws StudentNotFoundException, NotifIdNotExistsException;
+	public void payFee(String studentId, ModeOfPaymentConstant mode, int amount, String credentials) throws StudentNotFoundException, NotifIdNotExistsException;
+
+	
 }

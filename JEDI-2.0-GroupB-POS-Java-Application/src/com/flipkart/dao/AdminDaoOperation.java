@@ -1,7 +1,8 @@
 package com.flipkart.dao;
 
 /**
- * author: @shivam.singla
+ * @author Group-B
+ *
  */
 
 import com.flipkart.bean.Course;
@@ -52,7 +53,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
     }
 
     /**
-     * Method to add course in catalog using SQL command.
+     * Method to add course in catalogue using SQL command.
      * @param course -> Course to be added
      * @throws CourseFoundException
      */
@@ -68,6 +69,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
             statement.setString(3, course.getInstructorId());
             statement.setBoolean(4, true);
             statement.setInt(5, 0);
+            statement.setInt(6, course.getFees());
             int row = statement.executeUpdate();
 
             logger.info(row + " course added");
@@ -99,7 +101,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
     }
 
     /**
-     * Method to remove course from course catalog using SQL command.
+     * Method to remove course from course catalogue using SQL command.
      * @param courseID -> ID of course which is to be removed
      * @throws CourseNotFoundException
      * @throws CourseNotDeletedException
@@ -143,7 +145,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
     /**
      * Adds a professor object to the database using SQL command
-     * @param professor : professor object containing the details of the professor
+     * @param professor : professor object containing the details of the prof
      * @throws ProfNotAddedException
      * @throws ProfFoundException
      */
@@ -430,98 +432,6 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			}
 		}
     }
-
-    /**
-     * Get primary courses for registration of student
-     * @return -> Map containing student ID and corresponding primary courses
-     * @throws DatabaseException
-     */
-    @Override
-    public HashMap<String,List<Integer>> getPreferredCourses() throws DatabaseException {
-    	Connection conn = DBUtil.getConnection();
-    	HashMap<String,List<Integer>> preferredCourseList = new HashMap<>();
-		try 
-		{
-			statement = conn.prepareStatement(SQLQueriesConstant.VIEW_PREFERRED_COURSES);
-			ResultSet rs = statement.executeQuery();
-			
-			while (rs.next()) {
-				List<Integer> courses;
-				if(preferredCourseList.containsKey(rs.getString("sid"))) {
-					courses = preferredCourseList.remove(rs.getString("sid"));
-				}
-				else {
-					courses = new ArrayList<>();
-				}
-				courses.add(rs.getInt("cid"));
-				preferredCourseList.put(rs.getString("sid"), courses);
-			}
-			
-			return preferredCourseList;
-		}
-        catch (SQLException e) 
-        {
-            logger.error(e.getMessage());
-            throw new DatabaseException();
-        }
-        finally
-        {
-            try{
-                statement.close();
-                conn.close();
-            }
-            catch(Exception e){
-                logger.error("Couldn't close connection to database");
-                logger.error(e.getMessage());
-            }
-        }
-    }
-
-    /**
-     * Get alternate courses for registration of student
-     * @return -> Map containing student ID and corresponding alternate courses
-     * @throws DatabaseException
-     */
-    @Override
-    public HashMap<String,List<Integer>> getAlternateCourses() throws DatabaseException {
-    	Connection conn = DBUtil.getConnection();
-    	HashMap<String,List<Integer>> alternateCourseList = new HashMap<>();
-		try 
-		{
-			statement = conn.prepareStatement(SQLQueriesConstant.VIEW_ALTERNATE_COURSES);
-			ResultSet rs = statement.executeQuery();
-			
-			while (rs.next()) {
-				List<Integer> courses;
-				if(alternateCourseList.containsKey(rs.getString("sid"))) {
-					courses = alternateCourseList.remove(rs.getString("sid"));
-				}
-				else {
-					courses = new ArrayList<>();
-				}
-				courses.add(rs.getInt("cid"));
-				alternateCourseList.put(rs.getString("sid"), courses);
-			}
-			
-			return alternateCourseList;
-		}
-        catch (SQLException e) 
-        {
-            logger.error(e.getMessage());
-            throw new DatabaseException();
-        }
-        finally
-        {
-            try{
-                statement.close();
-                conn.close();
-            }
-            catch(Exception e){
-                logger.error("Couldn't close connection to database");
-                logger.error(e.getMessage());
-            }
-        }
-    }
     
     @Override
     public void setRegistrationStatus(String studentID) throws SQLException{
@@ -606,21 +516,10 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             while(resultSet.next()) {
                 String pid = resultSet.getString(3);
-//                sql = SQLQueries.GET_PROFESSOR_NAME;
-//                statement = conn.prepareStatement(sql);
-//                statement.setString(1, pid);
-//                ResultSet resultSet1 = statement.executeQuery();
-                String profName;
-                if (pid.equals("p0"))
-                {
-                	profName = "NA";
-                	pid = "NA";
-                }
-                else
-                	profName = UserDaoOperation.getInstance().getDetails(pid).getName();
+                String profName = UserDaoOperation.getInstance().getDetails(pid).getName();
 
                 Course course = new Course(resultSet.getInt(1), resultSet.getString(2),
-                		pid, profName, resultSet.getInt(5));
+                		pid, profName, resultSet.getInt(5), resultSet.getInt(6));
                 coursesList.add(course);
             }
 
@@ -699,18 +598,6 @@ public class AdminDaoOperation implements AdminDaoInterface {
         statement = conn.prepareStatement(sql);
         statement.setInt(1,num);
         statement.setInt(2,courseID);
-        statement.executeUpdate();
-    }
-
-    /**
-     * Delete chosen courses from database
-     * @throws SQLException
-     */
-    public void deleteChosenCourses() throws SQLException{
-    	Connection conn = DBUtil.getConnection();
-        statement = null;
-        String sql = SQLQueriesConstant.CLEAR_CHOSEN_COURSES;
-        statement = conn.prepareStatement(sql);
         statement.executeUpdate();
     }
 

@@ -19,7 +19,7 @@ import com.flipkart.service.StudentInterface;
 import com.flipkart.service.StudentOperation;
 
 /**
- * @author divy.soni
+ * @author Group-B
  *
  */
 public class StudentCRSMenu {
@@ -41,6 +41,7 @@ public class StudentCRSMenu {
 	 */
 	public void displayMenu() {
 		// Display the options available for the Student
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			
@@ -48,7 +49,7 @@ public class StudentCRSMenu {
 			System.out.println("Student Menu");
 			System.out.println("1. View Course Catalogue");
 			System.out.println("2. View Grades");
-			System.out.println("3. Register");
+			System.out.println("3. Semester Registration");
 			System.out.println("4. Add Course");
 			System.out.println("5. Drop Course");
 			System.out.println("6. View registered courses");
@@ -88,13 +89,10 @@ public class StudentCRSMenu {
 			case 7:
 				payFee();
 				break;
-				
 			case 8:
 				showNotifications();
-				break;
-
+			    break;
 			case 9:
-				//sc.close();
 				System.out.println("==================== Logging Out ====================");
 				return;
 
@@ -104,20 +102,6 @@ public class StudentCRSMenu {
 		}
 	}
 	
-	/**
-	 * Show notifications
-	 */
-	private void showNotifications ()
-	{
-		System.out.println("Notifications for student with id: " + studentID);
-		List<Notification> notifications = NotificationOperation.getInstance().getNotifications(studentID);
-		notifications.forEach(notification -> {
-			System.out.println("\nNotification id: " + notification.getNotificationId());
-			System.out.println("Student id: " + notification.getStudentId());
-			System.out.println("Notification type: " + notification.getType());
-			System.out.println("Notification message: " + notification.getMessage()+"\n");
-		});
-	}
 
 	/**
 	 * View all available courses
@@ -135,6 +119,22 @@ public class StudentCRSMenu {
 		}
 	}
 
+	
+	/**
+	 * Show notifications
+	 */
+	private void showNotifications ()
+	{
+		System.out.println("Notifications for student with id: " + studentID);
+		List<Notification> notifications = NotificationOperation.getInstance().getNotifications(studentID);
+		notifications.forEach(notification -> {
+			System.out.println("\nNotification id: " + notification.getNotificationId());
+			System.out.println("Student id: " + notification.getStudentId());
+			System.out.println("Notification type: " + notification.getType());
+			System.out.println("Notification message: " + notification.getMessage()+"\n");
+		});
+	}
+	
 	/**
 	 * View grades for the semester
 	 */
@@ -166,6 +166,7 @@ public class StudentCRSMenu {
 				return;
 			}
 			viewCourseCatalogue();
+			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
 			HashMap<Integer,Boolean> courseIDs = new HashMap<>();
 			System.out.println("Enter Course IDs for prefererred Course #1 : ");
@@ -176,14 +177,12 @@ public class StudentCRSMenu {
 			courseIDs.put(sc.nextInt(), true);
 			System.out.println("Enter Course IDs for prefererred Course #4 : ");
 			courseIDs.put(sc.nextInt(), true);
-			
 			System.out.println("Enter Course IDs for alternate Course #1 : ");
 			courseIDs.put(sc.nextInt(), false);
 			System.out.println("Enter Course IDs for alternate Course #2 : ");
 			courseIDs.put(sc.nextInt(), false);
 			
 			registrationInterface.registerCourses(studentID, courseIDs);
-			//sc.close();
 		}
 		catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -195,6 +194,7 @@ public class StudentCRSMenu {
 	 */
 	private void addCourse() {
 		viewCourseCatalogue();
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter CourseID : ");
 		int courseID = sc.nextInt();
@@ -210,7 +210,6 @@ public class StudentCRSMenu {
 		catch(Exception e) {
 			System.err.println(e.getMessage());
 		}
-		//sc.close();
 	}
 
 	/**
@@ -219,6 +218,7 @@ public class StudentCRSMenu {
 	private void dropCourse() {
 		System.out.println("Registered Courses :");
 		viewRegisteredCourses();
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter CourseID : ");
 		int courseID = sc.nextInt();
@@ -230,7 +230,6 @@ public class StudentCRSMenu {
 		catch(Exception e) {
 			System.err.println(e.getMessage());
 		}
-		//sc.close();
 	}
 
 	/**
@@ -253,24 +252,30 @@ public class StudentCRSMenu {
 	 * Pay semester Fees
 	 */
 	private void payFee() {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		try{
 			if(!registrationInterface.isRegistrationDone(studentID)) {
 				System.err.println("Registration not yet complete.");
-			}else if(registrationInterface.isPaymentDone(studentID)) {
-				System.err.println("Payment already done.");
-			}else {
-				float fee = registrationInterface.calculateFee(studentID);
+			}
+			else {
+				int fee = registrationInterface.calculateFee(studentID);
+				if(fee==0) {
+					System.out.println("Your payment is already completed.");
+					return;
+				}
 				System.out.println("Pending amount is : "+fee+", Do you want to pay? (Y/N) : ");
 				String inp = sc.next();
 				if(inp.equals("Y") || inp.equals("y")){
-					float amount = fee;
+					int amount = fee;
 					System.out.println("==================== Payment Gateway ====================");
 					System.out.println("1. Credit Card");
 					System.out.println("2. Net Banking");
 					System.out.println("3. Debit Card");
 					System.out.println("4. Scholarship");
-					System.out.println("5. Demand Draft");
+					System.out.println("5. Cash");
+					System.out.println("6. Cheque");
+					System.out.println("7. Cancel");
 					
 					System.out.println("Select Mode of Payment : ");
 					int modeChoice = sc.nextInt();
@@ -289,10 +294,15 @@ public class StudentCRSMenu {
 						payViaScholarship(studentID, amount);
 						break;
 					case 5:
-						payViaDemandDraft(studentID, amount);
+						payViaCash(studentID, amount);
 						break;
+					case 6:
+						payViaCheque(studentID, amount);
+						break;
+					case 7:
+						return;
 					default:
-						System.err.println("No such mode exists, valid choices 1, 2, 3");						
+						System.err.println("No such mode exists, Enter valid choices.");						
 					}
 				}
 				
@@ -301,7 +311,16 @@ public class StudentCRSMenu {
 		catch(Exception e){
 			System.err.println(e.getMessage());
 		}
-		//sc.close();
+	}
+
+	private void payViaCheque(String studentID2, int amount) {
+		// TODO Auto-generated method stub
+		try {
+			registrationInterface.payFee(studentID, ModeOfPaymentConstant.CHEQUE, amount, "Not Applicable");
+			System.out.println("Your Payment has been Accepted.");	
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	/**
@@ -309,8 +328,14 @@ public class StudentCRSMenu {
 	 * @param studentID2-> Student of of student paying
 	 * @param amount -> Amount they are paying
 	 */
-	private void payViaDemandDraft(String studentID2, float amount) {
-		System.out.println("Check with registrar's office for offline payment");			
+	private void payViaCash(String studentID2, int amount) {
+		
+		try {
+			registrationInterface.payFee(studentID, ModeOfPaymentConstant.CASH, amount, "Not Applicable");
+			System.out.println("Your Payment has been Accepted.");	
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	/**
@@ -318,11 +343,18 @@ public class StudentCRSMenu {
 	 * @param studentID2-> Student of of student paying
 	 * @param amount -> Amount they are paying
 	 */
-	private void payViaScholarship(String studentID2, float amount) {
-		System.out.println("Check with registrar's office for confirmation of scholarship");		
+	private void payViaScholarship(String studentID2, int amount) {
+			
+		try {
+			registrationInterface.payFee(studentID, ModeOfPaymentConstant.SCHOLORSHIP, amount, "Not Applicable");
+			System.out.println("Congratulions, Your Scholorship has been approved by the Admin.");
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
 	}
 
-	private void payViaDebitCard(String studentID, float amount) {
+	private void payViaDebitCard(String studentID, int amount) {
 		try {
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
@@ -353,7 +385,8 @@ public class StudentCRSMenu {
 				cvv = sc.next();
 			}
 			
-			registrationInterface.payFee(studentID, ModeOfPaymentConstant.DEBIT_CARD, amount);
+			registrationInterface.payFee(studentID, ModeOfPaymentConstant.DEBIT_CARD, amount, cardNo);
+			System.out.println("Your Payment is complete.");
 		}catch(Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -364,16 +397,17 @@ public class StudentCRSMenu {
 	 * @param studentID2-> Student of of student paying
 	 * @param amount -> Amount they are paying
 	 */
-	private void payViaNetBanking(String studentID2, float amount) {
+	private void payViaNetBanking(String studentID2, int amount) {
 		try {
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
 			System.out.println("==================== Net Banking Details ====================");
-			System.out.println("User:");
-			sc.next();
+			System.out.println("Username:");
+			String username=sc.next();
 			System.out.println("Password:");
 			sc.next();
-			registrationInterface.payFee(studentID, ModeOfPaymentConstant.NET_BANKING, amount);
+			registrationInterface.payFee(studentID, ModeOfPaymentConstant.NET_BANKING, amount, username);
+			System.out.println("Your Payment is complete.");
 		}catch(Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -384,7 +418,7 @@ public class StudentCRSMenu {
 	 * @param studentID2-> Student of of student paying
 	 * @param amount -> Amount they are paying
 	 */
-	private void payViaCreditCard(String studentID2, float amount) {
+	private void payViaCreditCard(String studentID2, int amount) {
 		try {
 			@SuppressWarnings("resource")
 			Scanner sc = new Scanner(System.in);
@@ -392,30 +426,31 @@ public class StudentCRSMenu {
 			System.out.println("==================== Credit Card Details ====================");
 
 			System.out.println("Card Number:");
-			String cardNo = sc.next();
-			while(!cardNo.matches("\\d{16}")) {
+			String cardNo = sc.nextLine();
+			while(!(cardNo.matches("\\d{16}"))) {
 				System.err.println("Invalid Credit Card details entered. Enter again : ");
-				cardNo = sc.next();
+				cardNo = sc.nextLine();
 			}
 			
 			System.out.println("Name:");
-			sc.next();
+			sc.nextLine();
 			
 			System.out.println("Expiry Date(dd-mm-yyyy):");
-			String date = sc.next();
+			String date = sc.nextLine();
 			while(!date.matches("\\d{2}-\\d{2}-\\d{4}")) {
 				System.err.println("Invalid date format entered. Enter Again : ");
-				date = sc.next();
+				date = sc.nextLine();
 			}
 			
 			System.out.println("CVV:");
-			String cvv = sc.next();
+			String cvv = sc.nextLine();
 			while(!cvv.matches("\\d{3}")) {
 				System.err.println("Invalid CVV entered. Enter again : ");
-				cvv = sc.next();
+				cvv = sc.nextLine();
 			}
 			
-			registrationInterface.payFee(studentID, ModeOfPaymentConstant.CREDIT_CARD, amount);
+			registrationInterface.payFee(studentID, ModeOfPaymentConstant.CREDIT_CARD, amount, cardNo);
+			System.out.println("Your Payment is complete.");
 		}catch(Exception e) {
 			System.err.println(e.getMessage());
 		}

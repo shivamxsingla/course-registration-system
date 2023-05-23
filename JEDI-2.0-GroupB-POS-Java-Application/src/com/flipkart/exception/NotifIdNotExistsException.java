@@ -4,10 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * @author tanvi.sharma
+ * @author Group-B
  *
  */
-@SuppressWarnings("serial")
+
 public class NotifIdNotExistsException extends Exception{
 	private int notifId;
 

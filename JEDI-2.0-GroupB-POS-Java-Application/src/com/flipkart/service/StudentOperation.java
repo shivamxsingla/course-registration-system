@@ -2,7 +2,10 @@
  * 
  */
 package com.flipkart.service;
-
+/**
+ * @author Group-B
+ *
+ */
 import java.util.List;
 
 
@@ -17,7 +20,7 @@ import com.flipkart.exception.StudentNotAddedException;
 import com.flipkart.exception.StudentNotFoundException;
 
 /**
- * @author ramasamy.kandasamy
+ * @author rohanagarwal
  *
  */
 public class StudentOperation implements StudentInterface {

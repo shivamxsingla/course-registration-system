@@ -4,9 +4,10 @@
 package com.flipkart.constant;
 
 /**
- * @author ansh.aggarwal
+ * @author Group-B
  *
  */
+
 public enum RoleConstant {
 	Student,
 	Professor,

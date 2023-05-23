@@ -19,9 +19,10 @@ import com.flipkart.exception.*;
 import com.flipkart.utils.DBUtil;
 
 /**
- * @author ansh.aggarwal
+ * @author Group-B
  *
  */
+
 @SuppressWarnings("unused")
 public class StudentDaoOperation implements StudentDaoInterface{
 	private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
@@ -158,7 +159,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			ResultSet catalogue= statement.executeQuery();
 			
 			while(catalogue.next()) {
-				courses.add(new Course(catalogue.getInt("cid"), catalogue.getString("cname"), catalogue.getString("pid"), UserDaoOperation.getInstance().getDetails(catalogue.getString("pid")).getName(), catalogue.getInt("filledSeats")));
+				courses.add(new Course(catalogue.getInt("cid"), catalogue.getString("cname"), catalogue.getString("pid"), UserDaoOperation.getInstance().getDetails(catalogue.getString("pid")).getName(), catalogue.getInt("filledSeats"), catalogue.getInt("fees")));
 			}
 		}
 		catch(SQLException e) {

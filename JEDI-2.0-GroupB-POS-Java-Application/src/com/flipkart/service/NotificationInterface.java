@@ -1,5 +1,8 @@
 package com.flipkart.service;
-
+/**
+ * @author Group-B
+ *
+ */
 import java.util.List;
 
 import com.flipkart.bean.Notification;
@@ -9,7 +12,6 @@ import com.flipkart.bean.PaymentNotification;
 /**
  * Below interface describes operation of sending notification.
  */
-@SuppressWarnings("unused")
 public interface NotificationInterface {
 
     /**

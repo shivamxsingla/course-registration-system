@@ -1,5 +1,8 @@
 package com.flipkart.service;
-
+/**
+ * @author Group-B
+ *
+ */
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,7 +13,6 @@ import com.flipkart.bean.PaymentNotification;
 import com.flipkart.client.CRSApplication;
 import com.flipkart.dao.NotificationDaoOperation;
 
-@SuppressWarnings("unused")
 public class NotificationOperation implements NotificationInterface{
 	private static Logger logger = Logger.getLogger(NotificationOperation.class);
 
@@ -29,14 +31,6 @@ public class NotificationOperation implements NotificationInterface{
 		return instance;
 	}
 	
-//    @Override
-//    public int sendNotification(PaymentNotification NotifObj) {
-//        logger.info("______________________");
-//    	logger.info("Result of Payment:");
-//        logger.info(NotifObj.getNotificationMessage());
-//        logger.info("______________________");
-//    	return 0;
-//    }
 	
 	  @Override
 	  public void sendNotification(String sid, String type, String message) {

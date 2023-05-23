@@ -4,10 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * to be called during password change
+ * @author Group-B
  *
  */
-@SuppressWarnings("serial")
+
 public class PasswordMatchedOldException extends Exception{
 	/**
 	 * Constructor

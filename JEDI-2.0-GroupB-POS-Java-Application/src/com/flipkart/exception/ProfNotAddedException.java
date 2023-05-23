@@ -1,9 +1,10 @@
 package com.flipkart.exception;
 
 /**
- * Exception Class for when a prof cannot be added to the database
+ * @author Group-B
+ *
  */
-@SuppressWarnings("serial")
+
 public class ProfNotAddedException extends Exception {
     private String ProfID;
 

@@ -14,28 +14,19 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 
 import com.flipkart.dao.NotificationDaoOperation;
-
 /**
- * @author tanvi.sharma
+ * @author Group-B
  *
  */
-@SuppressWarnings("unused")
-public class DBUtil {
-	
-	  static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; 
-	  static final String DB_URL = "jdbc:mysql://localhost/CRSDatabase";
 
-	  //  Database credentials
-	  static final String USER = "root";
-	  static final String PASS = "Fk!_191241";
-	
+public class DBUtil {
 	private static Logger logger = Logger.getLogger(NotificationDaoOperation.class);
 
     /**
      * Get connection of SQL Database
      * @return -> Connection
      */
-
+	@SuppressWarnings("unused")
 	public static Connection getConnection() {
 		
 		Connection connection = null;
@@ -48,22 +39,27 @@ public class DBUtil {
             try 
             {
             	
-//            	Properties prop = new Properties();
-//                InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("./config.properties");
-//                prop.load(inputStream);
-//                String driver = prop.getProperty("driver");
-//                String url = prop.getProperty("url");
-//                String user = prop.getProperty("user");
-//                String password = prop.getProperty("password");
-            	
-                Class.forName(JDBC_DRIVER);
-                connection = DriverManager.getConnection(DB_URL, USER, PASS);
+            	Properties prop = new Properties();
+                InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("./config.properties");
+                prop.load(inputStream);
+                String driver = prop.getProperty("driver");
+                String url = prop.getProperty("url");
+                String user = prop.getProperty("user");
+                String password = prop.getProperty("password");
+                Class.forName(driver);
+                connection = DriverManager.getConnection(url, user, password);
                 
             }
             catch (ClassNotFoundException e){
                 logger.error(e.getMessage());
             }
             catch (SQLException e) {
+                logger.error(e.getMessage());
+            }
+            catch (FileNotFoundException e) {
+                logger.error(e.getMessage());
+            }
+            catch (IOException e) {
                 logger.error(e.getMessage());
             }
             return connection;

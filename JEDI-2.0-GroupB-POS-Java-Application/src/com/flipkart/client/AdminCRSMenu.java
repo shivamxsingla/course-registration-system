@@ -20,9 +20,10 @@ import java.util.Scanner;
 
 
 /**
- * @author divy.soni
+ * @author Group-B
  *
  */
+
 public class AdminCRSMenu {
 	
 	Scanner scanner = new Scanner(System.in);
@@ -41,12 +42,11 @@ public class AdminCRSMenu {
 			System.out.println(" 4. Add Professor");
 			System.out.println(" 5. Remove Professor");
 			System.out.println(" 6. Approve Student");
-			System.out.println(" 7. Remove Student");
-			System.out.println(" 8. Validate Registrations");
-			System.out.println(" 9. Confirm Fee Payment");
-			System.out.println(" 10. Assign Professor to course");
-			System.out.println(" 11. Generate report card of the student");
-			System.out.println(" 12. Logout");
+			System.out.println(" 7. Approve All Students");
+			System.out.println(" 8. Remove Students");
+			System.out.println(" 9. Assign Professor to course");
+			System.out.println(" 10. Generate report card of the student");
+			System.out.println(" 11. Logout");
 			System.out.println("\n==========================================================================\n");
 			System.out.println("Enter Option : ");
 			int optionChosen = scanner.nextInt();scanner.nextLine();
@@ -75,55 +75,46 @@ public class AdminCRSMenu {
 				case 6:
 					 approveStudent();
 					break;
-
+					
 				case 7:
-					removeStudent();
+					approveAllStudents();
 					break;
 
 				case 8:
-					validateRegistrations();
+					removeStudent();
 					break;
 
 				case 9:
-					confirmFeePayment();
-					break;
-					
-				case 10:
 					assignProf();
 					break;
 
-				case 11:
+				case 10:
 					generateReport();
 					break;
 
-				case 12:
+				case 11:
 					logout();looping=false;
 					break;
 			}
 		}
 	}
 
-	/**
-	 * Method to confirm payment of the student
-	 */
-	private void confirmFeePayment() {
-		System.out.println("Enter Student Id:");
-		String studentId = scanner.next();
-		System.out.println("Select Mode Of Payment:");
-		System.out.println("1. Scholarship");
-		System.out.println("2. Demand Draft");
-		System.out.println("3. Cancel");
-		int choice = scanner.nextInt();
-		switch(choice) {
-			case 1:
-				AdminOperation.getInstance().paymentDoneViaScholarship(studentId);
-				break;
-			case 2:
-				AdminOperation.getInstance().paymentDoneViaDemandDraft(studentId);
-				break;
-			default:
-				System.out.println("Confirmation Of Payment Cancelled.");
-				break;
+	private void approveAllStudents() {
+		try
+		{
+			List<Student> students = AdminOperation.getInstance().viewPending();
+			System.out.println("==================== Pending students ====================\n");
+			System.out.printf("%10s%20s%20s\n","Student ID","Student Name","Branch");
+			students.forEach((stud) -> System.out.printf("%10s%20s%20s\n",stud.getId(),stud.getName(),stud.getBranch()));
+			for( Student stud : students) {
+				String id = stud.getId();
+				AdminOperation.getInstance().approveStudent(id);
+			}
+			
+		}
+		catch (Exception e)
+		{
+			System.err.println(e.getMessage());
 		}
 		
 	}
@@ -163,7 +154,7 @@ public class AdminCRSMenu {
 	private void assignProf() {
 		try {
 			List<Professor> profs = AdminOperation.getInstance().viewProfessors();
-			System.out.printf("%10s%20s%20s\n","Prof ID","Prof Name","Department");
+			System.out.printf("%10s%20s%20s\n","Prof. ID","Prof. Name","Department");
 			profs.forEach((prof) -> System.out.printf("%10s%20s%20s\n",prof.getId(),prof.getName(),prof.getDepartment()));
 			System.out.println("Enter the professor ID");
 			String profID = scanner.nextLine();
@@ -178,19 +169,6 @@ public class AdminCRSMenu {
 		}
 	}
 
-	/**
-	 * Method for validating registrations
-	 */
-	private void validateRegistrations() {
-		try {
-			
-			AdminOperation.getInstance().validateRegistration();
-
-			System.out.println("Registrations Validated");
-		}catch (Exception e){
-			System.out.println(e.getMessage());
-		}
-	}
 
 	/**
 	 * Method for removing student from database
@@ -323,8 +301,10 @@ public class AdminCRSMenu {
 			int cid = scanner.nextInt();scanner.nextLine();
 			System.out.println("Course Name:");
 			String cname = scanner.nextLine();
+			System.out.println("Enter Fees:");
+			int fees = scanner.nextInt();
 			
-			AdminOperation.getInstance().addCourse(new Course(cid,cname,"p0","p0",0));
+			AdminOperation.getInstance().addCourse(new Course(cid,cname,"P01","Cyrus Dwivedi",0, fees));
 
 			System.out.println("+++++++++Course Added+++++++++");
 		}catch (Exception e){

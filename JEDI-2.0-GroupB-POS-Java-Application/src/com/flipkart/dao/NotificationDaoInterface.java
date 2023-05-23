@@ -3,12 +3,17 @@
  */
 package com.flipkart.dao;
 
+/**
+ * @author Group-B
+ *
+ */
+
 import java.util.List;
 
 import com.flipkart.bean.Notification;
 
 /**
- * @author divy.soni
+ * @author Shivam
  *
  */
 public interface NotificationDaoInterface {

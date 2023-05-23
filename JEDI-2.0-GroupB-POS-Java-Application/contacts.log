@@ -68,3 +68,73 @@
 10:00:23,228  INFO NotificationOperation,main:45 - Result of payment: 
 10:00:23,228  INFO NotificationOperation,main:46 - Payment done for student with id 24 via Scholarship
 10:00:23,228  INFO NotificationOperation,main:47 - ______________________
+10:41:17,081  INFO UserDaoOperation,main:260 - Can not issue data manipulation statements with executeQuery().
+10:48:53,181  INFO UserDaoOperation,main:260 - Can not issue data manipulation statements with executeQuery().
+10:59:41,077  INFO UserDaoOperation,main:71 - Entered incorrect password
+11:17:04,480  INFO UserDaoOperation,main:71 - Entered incorrect password
+11:17:28,195  INFO AdminDaoOperation,main:733 - 1 student approved.
+11:18:23,213  INFO UserDaoOperation,main:71 - Entered incorrect password
+11:18:30,394  INFO AdminDaoOperation,main:686 - Validation complete!
+11:19:25,879  INFO NotificationOperation,main:44 - ______________________
+11:19:25,880  INFO NotificationOperation,main:45 - Result of payment: 
+11:19:25,880  INFO NotificationOperation,main:46 - Payment done for student with id 24 via Scholarship
+11:19:25,880  INFO NotificationOperation,main:47 - ______________________
+11:19:59,301 ERROR NotificationDaoOperation,main:106 - Column 'notificationType' not found.
+11:21:53,160 ERROR NotificationDaoOperation,main:80 - Before start of result set
+11:23:53,537 ERROR NotificationDaoOperation,main:80 - Before start of result set
+11:28:51,348  INFO UserDaoOperation,main:73 - User with userId  does not exist
+11:29:26,449  INFO UserDaoOperation,main:71 - Entered incorrect password
+11:32:31,640 ERROR NotificationDaoOperation,main:80 - Before start of result set
+11:47:14,869 ERROR NotificationDaoOperation,main:80 - Before start of result set
+11:50:07,471  INFO UserDaoOperation,main:71 - Entered incorrect password
+11:50:34,732  INFO RegistrationOperation,main:61 - Courses sent for validation
+11:54:52,645  INFO RegistrationOperation,main:61 - Courses sent for validation
+11:55:04,448  INFO AdminDaoOperation,main:686 - Validation complete!
+12:01:24,673  INFO RegistrationOperation,main:61 - Courses sent for validation
+12:01:34,375 ERROR NotificationDaoOperation,main:263 - Column 'grade' not found.
+12:09:48,126  INFO RegistrationOperation,main:61 - Courses sent for validation
+12:16:56,934  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:56,944  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:56,952  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:56,959  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:56,967  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:56,977  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:56,986  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,004  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,013  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,021  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,030  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,038  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,047  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,055  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,063  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,070  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,078  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,086  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:16:57,094  INFO AdminDaoOperation,main:733 - 1 student approved.
+12:17:54,914  INFO RegistrationOperation,main:61 - Courses sent for validation
+15:44:05,178 ERROR NotificationDaoOperation,main:88 - Duplicate entry '26-2' for key 'chosencourse.PRIMARY'
+15:44:42,225  INFO UserDaoOperation,main:73 - User with userId 20 does not exist
+16:02:02,712 ERROR NotificationDaoOperation,main:91 - Duplicate entry '26-2' for key 'chosencourse.PRIMARY'
+16:18:10,327  INFO AdminDaoOperation,main:769 - Professor list generated
+16:18:27,889  INFO AdminDaoOperation,main:404 - 1 entries updated.
+16:18:27,889  INFO AdminDaoOperation,main:410 - Prof with userId: 3 assigned to course : 2
+16:18:33,080  INFO AdminDaoOperation,main:769 - Professor list generated
+16:18:38,372  INFO AdminDaoOperation,main:404 - 1 entries updated.
+16:18:38,372  INFO AdminDaoOperation,main:410 - Prof with userId: 9 assigned to course : 3
+16:38:45,313  INFO UserDaoOperation,main:71 - Entered incorrect password
+16:45:52,194 ERROR NotificationDaoOperation,main:91 - No value specified for parameter 1
+16:48:18,350 ERROR NotificationDaoOperation,main:92 - Before start of result set
+16:55:39,409 ERROR NotificationDaoOperation,main:92 - Before start of result set
+17:01:07,389 ERROR NotificationDaoOperation,main:95 - Before start of result set
+17:06:50,551  INFO UserDaoOperation,main:71 - Entered incorrect password
+17:12:10,799 ERROR NotificationDaoOperation,main:97 - Before start of result set
+17:13:08,899 ERROR NotificationDaoOperation,main:97 - Before start of result set
+17:39:03,532 ERROR NotificationDaoOperation,main:96 - Before start of result set
+11:44:10,920 ERROR NotificationDaoOperation,main:107 - Column 'notificationType' not found.
+11:54:18,690  INFO AdminDaoOperation,main:656 - Professor list generated
+11:54:29,103  INFO AdminDaoOperation,main:416 - Cannot add or update a child row: a foreign key constraint fails (`crsdatabase`.`coursecatalogue`, CONSTRAINT `coursecatalogue_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `professors` (`id`))
+14:19:45,525 ERROR NotificationDaoOperation,main:49 - Can not issue data manipulation statements with executeQuery().
+14:21:18,813 ERROR NotificationDaoOperation,main:49 - No value specified for parameter 1
+14:22:24,878 ERROR NotificationDaoOperation,main:49 - Parameter index out of range (5 > number of parameters, which is 4).
+14:23:17,548 ERROR NotificationDaoOperation,main:49 - Column 'id' cannot be null

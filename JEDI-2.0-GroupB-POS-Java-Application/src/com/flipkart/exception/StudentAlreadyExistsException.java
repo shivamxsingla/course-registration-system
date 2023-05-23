@@ -4,10 +4,10 @@
 package com.flipkart.exception;
 
 /**
- * @author ramasamy.kandasamy
+ * @author Group-B
  *
  */
-@SuppressWarnings("serial")
+
 public class StudentAlreadyExistsException extends Exception {
 
 	private String studentID;
