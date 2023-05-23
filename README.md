@@ -17,7 +17,7 @@ Professors must be able to access the on-line system to indicate which courses t
 <h2></h2>
 
 <b>Contributors:</b>
-- Shivam Singla
+- Shivam Singla (Group Leader)
 - Cyrus Dwivedi
 - Ansh Aggarwal
 - Tanvi Sharma
