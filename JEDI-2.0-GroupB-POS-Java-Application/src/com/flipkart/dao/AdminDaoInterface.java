@@ -99,6 +99,8 @@ public interface AdminDaoInterface {
      * @throws StudentNotFoundException
      */
     public void approveStudent(String studentId) throws StudentNotFoundException;
+    
+    public void approveAllStudent();
 
     /**
      * Method to fetch the list of all enrolled professors

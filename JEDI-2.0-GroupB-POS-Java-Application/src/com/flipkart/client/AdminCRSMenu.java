@@ -106,11 +106,7 @@ public class AdminCRSMenu {
 			System.out.println("==================== Pending students ====================\n");
 			System.out.printf("%10s%20s%20s\n","Student ID","Student Name","Branch");
 			students.forEach((stud) -> System.out.printf("%10s%20s%20s\n",stud.getId(),stud.getName(),stud.getBranch()));
-			for( Student stud : students) {
-				String id = stud.getId();
-				AdminOperation.getInstance().approveStudent(id);
-			}
-			
+			AdminOperation.getInstance().approveAllStudent();			
 		}
 		catch (Exception e)
 		{

@@ -180,4 +180,12 @@ public class AdminOperation implements AdminInterface{
             throw e;
         }
     }
+
+	public void approveAllStudent() {
+		try {
+            adminDaoInterfaceImpl.approveAllStudent();
+        } catch (Exception e) {
+            throw e;
+        }
+	}
 }

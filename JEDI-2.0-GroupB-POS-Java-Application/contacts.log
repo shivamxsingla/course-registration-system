@@ -138,3 +138,13 @@
 14:21:18,813 ERROR NotificationDaoOperation,main:49 - No value specified for parameter 1
 14:22:24,878 ERROR NotificationDaoOperation,main:49 - Parameter index out of range (5 > number of parameters, which is 4).
 14:23:17,548 ERROR NotificationDaoOperation,main:49 - Column 'id' cannot be null
+01:13:08,665  INFO AdminDaoOperation,main:231 - 1 user added.
+01:13:08,667  INFO AdminDaoOperation,main:237 - User with userId: Divy_Soni added.
+01:13:08,692  INFO StudentDaoOperation,main:75 - 1 student added.
+01:13:08,692  INFO StudentDaoOperation,main:81 - User with userId: Divy_Soni added.
+01:14:25,478  INFO AdminDaoOperation,main:231 - 1 user added.
+01:14:25,478  INFO AdminDaoOperation,main:237 - User with userId: Harshit_Jha added.
+01:14:25,499  INFO StudentDaoOperation,main:75 - 1 student added.
+01:14:25,500  INFO StudentDaoOperation,main:81 - User with userId: Harshit_Jha added.
+01:15:02,221  INFO AdminDaoOperation,main:620 - 0 student approved.
+01:15:06,480  INFO AdminDaoOperation,main:733 - All the students have been approved.

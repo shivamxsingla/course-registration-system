@@ -107,4 +107,6 @@ public interface AdminInterface {
      * @return list of student objects whose approvals are pending
      */
     public List<Student> viewPending();
+    
+    public void approveAllStudent();
 }

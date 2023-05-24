@@ -72,4 +72,5 @@ public class SQLQueriesConstant {
 	public static final String UPDATE_AMOUNT = "update Students set amount = ? where id = ?";
 	public static final String GET_PENDING_AMOUNT = "select amount from Students where id=?";
 	public static final String INSERT_PAYMENT = "insert into payment values (?,?,?,?,?)";
+	public static final String APPROVE_ALL_STUDENT_QUERY = "UPDATE Students SET isApproved = 1";
 }

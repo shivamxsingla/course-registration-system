@@ -721,4 +721,20 @@ public class AdminDaoOperation implements AdminDaoInterface {
         }
         return studentList;
     }
+
+	public void approveAllStudent() {
+		 Connection conn = DBUtil.getConnection();
+	        statement = null;
+	        try {
+	            String sql = SQLQueriesConstant.APPROVE_ALL_STUDENT_QUERY;
+	            statement = conn.prepareStatement(sql);
+	            int row = statement.executeUpdate();
+
+	            logger.info("All the students have been approved.");
+
+	        }catch(SQLException se) {
+	            //logger.error(se.getMessage());
+	        }
+		
+	}
 }
