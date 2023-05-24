@@ -44,14 +44,16 @@ public class CRSApplication {
 	public static void showMainMenu() {
 		while (true)
 		{
-			System.out.println("\n==========================================================================\n");
-			System.out.println("Welcome to the Course Registration System");
-			System.out.println("1. Login");
-			System.out.println("2. Student Registration");
-			System.out.println("3. Update Password");
-			System.out.println("4. Exit");
-			System.out.println("\n==========================================================================\n");
-			System.out.println("Enter Option : ");
+			    System.out.println("+---------------------------------------------+");
+		        System.out.println("|  Welcome to the Course Registration System  |");
+		        System.out.println("+--------|------------------------------------+");
+		        System.out.println("|   1    |  Login                             |");
+		        System.out.println("|   2    |  Student Registration              |");
+		        System.out.println("|   3    |  Update Password                   |");
+		        System.out.println("|   4    |  Exit                              |");
+		        System.out.println("+--------+------------------------------------+");
+		        System.out.print("\nEnter Option: ");
+
 				String optionChosen = scanner.nextLine();
 				switch(optionChosen) {		
 				case "1":

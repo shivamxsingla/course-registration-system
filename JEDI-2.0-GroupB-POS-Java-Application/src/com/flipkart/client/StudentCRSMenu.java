@@ -44,20 +44,24 @@ public class StudentCRSMenu {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		while (true) {
+		
 			
-			System.out.println("\n==========================================================================\n");
-			System.out.println("Student Menu");
-			System.out.println("1. View Course Catalogue");
-			System.out.println("2. View Grades");
-			System.out.println("3. Semester Registration");
-			System.out.println("4. Add Course");
-			System.out.println("5. Drop Course");
-			System.out.println("6. View registered courses");
-			System.out.println("7. Make Payment");
-			System.out.println("8. Show Notifications");
-			System.out.println("9. Logout");
-			System.out.println("\n==========================================================================\n");
-			System.out.println("Enter Option : ");
+			System.out.println("\n+------------------------------------------------------------------------+");
+			System.out.println("|                             Student Menu                               |");
+			System.out.println("+------------------------------------------------------------------------+");
+			System.out.println("|   1    | View Course Catalogue                                         |");
+			System.out.println("|   2    | View Grades                                                   |");
+			System.out.println("|   3    | Semester Registration                                         |");
+			System.out.println("|   4    | Add Course                                                    |");
+			System.out.println("|   5    | Drop Course                                                   |");
+			System.out.println("|   6    | View registered courses                                       |");
+			System.out.println("|   7    | Make Payment                                                  |");
+			System.out.println("|   8    | Show Notifications                                            |");
+			System.out.println("|   9    | Logout                                                        |");
+			System.out.println("+--------+---------------------------------------------------------------+");
+			System.out.println("\nEnter Option: ");
+
+			
 			int input = sc.nextInt();
 			sc.nextLine();
 

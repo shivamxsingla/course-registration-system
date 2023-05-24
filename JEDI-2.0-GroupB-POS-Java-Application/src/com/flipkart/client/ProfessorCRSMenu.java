@@ -42,14 +42,17 @@ public class ProfessorCRSMenu {
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("\n==========================================================================\n");
-			System.out.println("Professor Menu");
-			System.out.println("1. View Courses");
-			System.out.println("2. View Enrolled Students");
-			System.out.println("3. Assign grade");
-			System.out.println("4. Logout\n");
-			System.out.println("\n==========================================================================\n");
-			System.out.println("Enter Option : ");
+			
+			System.out.println("+------------------------------------------------------------------------+");
+	        System.out.println("|                           Professor Menu                               |");
+	        System.out.println("+------------------------------------------------------------------------+");
+	        System.out.println("|   1    | View Courses                                                  |");
+	        System.out.println("|   2    | View Enrolled Students                                        |");
+	        System.out.println("|   3    | Assign Grade                                                  |");
+	        System.out.println("|   4    | Logout                                                        |");
+	        System.out.println("+--------+---------------------------------------------------------------+");
+	        System.out.print("\nEnter Option: ");
+
 
 			int input = sc.nextInt();
 			sc.nextLine();

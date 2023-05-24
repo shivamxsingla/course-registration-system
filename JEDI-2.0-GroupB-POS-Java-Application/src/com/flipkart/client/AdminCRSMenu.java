@@ -34,22 +34,25 @@ public class AdminCRSMenu {
 	public void printAdminMenu() {
 		boolean looping = true;
 		while (looping) {
-			System.out.println("\n==========================================================================\n");
-			System.out.println("Admin Menu");
-			System.out.println(" 1. View Course Catalog");
-			System.out.println(" 2. Add Course");
-			System.out.println(" 3. Remove Course");
-			System.out.println(" 4. Add Professor");
-			System.out.println(" 5. Remove Professor");
-			System.out.println(" 6. Approve Student");
-			System.out.println(" 7. Approve All Students");
-			System.out.println(" 8. Remove Students");
-			System.out.println(" 9. Assign Professor to course");
-			System.out.println(" 10. Generate report card of the student");
-			System.out.println(" 11. Logout");
-			System.out.println("\n==========================================================================\n");
-			System.out.println("Enter Option : ");
-			int optionChosen = scanner.nextInt();scanner.nextLine();
+		
+			
+			System.out.println("+------------------------------------------------------------------------+");
+	        System.out.println("|                             Admin Menu                                 |");
+	        System.out.println("+------------------------------------------------------------------------+");
+	        System.out.println("|   1    | View Course Catalog                                           |");
+	        System.out.println("|   2    | Add Course                                                    |");
+	        System.out.println("|   3    | Remove Course                                                 |");
+	        System.out.println("|   4    | Add Professor                                                 |");
+	        System.out.println("|   5    | Remove Professor                                              |");
+	        System.out.println("|   6    | Approve Student                                               |");
+	        System.out.println("|   7    | Approve All Students                                          |");
+	        System.out.println("|   8    | Remove Students                                               |");
+	        System.out.println("|   9    | Assign Professor to course                                    |");
+	        System.out.println("|   10   | Generate report card of the student                           |");
+	        System.out.println("|   11   | Logout                                                        |");
+	        System.out.println("+--------+---------------------------------------------------------------+");
+	        System.out.println("\nEnter Option: ");
+	    	int optionChosen = scanner.nextInt();scanner.nextLine();
 
 			switch (optionChosen) {
 				case 1:
